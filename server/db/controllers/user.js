@@ -1,6 +1,6 @@
 const UserModel = require('../models/user.js');
 
-function findOne(username, cb) { 
+function findOne(username, cb) {
   UserModel.findOne({username: username}, cb);
 }
 
@@ -53,6 +53,49 @@ function removeSubscription(username, subscription, cb) {
     user.save((err) => cb(err, user));
   });
 }
+
+function addToQueue(username, episode, cb) {
+  UserModel.findOne({username: username}, (err, user) => {
+    if (err) {
+      cb(err, null);
+    } else if (!user) {
+      cb(new Error(`username ${username} not found`), null);
+    } else {
+      // Checks to see if subscription already is in array
+      if (user.queue.includes(episode)) {
+        cb(new Error(`episode ${episode} already exists in array`), null);
+      } else {
+        user.queue.push(episode);
+        user.markModified('queue');
+        user.save((err) => cb(err, user));
+      }
+    }
+  });
+}
+
+function removeFromQueue(username, episode, cb) {
+  UserModel.findOne({username: username}, (err, user) => {
+    if (err) {
+      cb(err, null);
+      return;
+    }
+    if (!user) {
+      cb(new Error(`username ${username} not found`), null);
+      return;
+    }
+
+    const queue = user.queue;
+    const index = queue.indexOf(episode);
+    if (index < 0) {
+      cb(new Error(`episode ${episdode} not found in ${username}'s queue'`), null);
+      return;
+    }
+    queue.splice(index, 1);
+    user.markModified('queue');
+    user.save((err) => cb(err, user));
+  });
+}
+
 
 module.exports = {
   findOne: findOne,
