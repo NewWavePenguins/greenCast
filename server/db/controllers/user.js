@@ -102,5 +102,8 @@ module.exports = {
   addOne: addOne,
   removeOne: removeOne,
   addSubscription: addSubscription,
-  removeSubscription: removeSubscription
+  removeSubscription: removeSubscription,
+  addToQueue: addToQueue,
+  removeFromQueue: removeFromQueue
+
 };
