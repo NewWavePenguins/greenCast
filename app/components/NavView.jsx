@@ -21,7 +21,7 @@ class NavView extends React.Component {
                 />
               </div>
               : 
-              <Link to='/' style={styles.back}>Back</Link>
+              <Link to='/search' style={styles.back}>Back</Link>
           }    
       </div>
     );
