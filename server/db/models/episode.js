@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const episodeSchema = mongoose.Schema({
-  username: {
-    type: String,
-    unique: true
-  },
   title: String,
   description: String,
   duration: Number,
@@ -16,6 +12,6 @@ const episodeSchema = mongoose.Schema({
   }
 });
 
-const EpisodeModel = mongoose.model('User', episodeSchema);
+const EpisodeModel = mongoose.model('Episode', episodeSchema);
 
 module.exports = EpisodeModel;
