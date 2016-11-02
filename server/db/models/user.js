@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
 const userSchema = mongoose.Schema({
   username: {
@@ -6,7 +7,7 @@ const userSchema = mongoose.Schema({
     unique: true
   },
   subscriptions: Array,
-  queue: Array
+  queue: [{ type: Schema.Types.ObjectId, ref: 'Episode' }]
 });
 
 const UserModel = mongoose.model('User', userSchema);
