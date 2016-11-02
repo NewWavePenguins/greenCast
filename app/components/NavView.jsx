@@ -21,7 +21,7 @@ class NavView extends React.Component {
                 />
               </div>
               : 
-              <Link to='/'>Back</Link>
+              <Link to='/' style={styles.back}>Back</Link>
           }    
       </div>
     );
@@ -62,6 +62,15 @@ const styles = {
   logout: {
     position: 'absolute',
     left: '90%',
+    top: '0',
+    marginTop: '15px',
+    fontFamily: 'droid sans',
+    textDecoration: 'none',
+    color: 'white'
+  },
+  back: {
+    position: 'absolute',
+    right: '90%',
     top: '0',
     marginTop: '15px',
     fontFamily: 'droid sans',

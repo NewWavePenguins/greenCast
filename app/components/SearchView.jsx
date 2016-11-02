@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 class SearchView extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class SearchView extends React.Component {
         <button style={styles.searchButton}>
           <i className="fa fa-search" ariaHidden="true"></i>
         </button>
-        { this.props.searching ? <button style={styles.stopSearch} onClick={this.innerStopSearching.bind(this)}>Stop Searching</button> : null }
+        <Link to='/user/subscriptions' style={styles.myPodcasts} >My Podcasts</Link>
       </div>
     );
   }
@@ -53,7 +54,7 @@ const styles = {
     background: 'rgb(90, 199, 90)',
     border: '0px'
   },
-  stopSearch: {
+  myPodcasts: {
     position: 'absolute',
     top: '-21px',
     marginTop: '15px',
