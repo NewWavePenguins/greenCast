@@ -108,6 +108,15 @@ const addToQueue = (req, res) => {
 };
 
 
+const removeFromQueue = (req, res) => {
+  console.log('removed from queue')
+  const username = req.user.username;
+  const episode = req.body.episode;
+  //if episode does not already exist in database...
+    //Episode.addOne(episode)...then...
+      //User.findOne(username) --> User.addToQueue(episodeId)
+};
+
 module.exports = {
   root: root,
   getSubscriptions: getSubscriptions,
@@ -117,5 +126,6 @@ module.exports = {
   login: login,
   logout: logout,
   topPodcasts: topPodcasts,
-  addToQueue: addToQueue
+  addToQueue: addToQueue,
+  removeFromQueue: removeFromQueue
 };

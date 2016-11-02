@@ -80,6 +80,7 @@ app.get('*', routes.root);
 //begin adding new request handlers:
 
 app.post('/user/:username/addToQueue', routes.addToQueue)
+app.delete('/user/:username/removeFromQueue', routes.removeFromQueue)
 
 
 app.listen(3000, () => console.log('GreenCast listening on port 3000'));
