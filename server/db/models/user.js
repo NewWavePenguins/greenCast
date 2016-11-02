@@ -5,9 +5,10 @@ const userSchema = mongoose.Schema({
     type: String,
     unique: true
   },
-  subscriptions: Array
-}); 
+  subscriptions: Array,
+  queue: Array
+});
 
 const UserModel = mongoose.model('User', userSchema);
 
-module.exports = UserModel; 
+module.exports = UserModel;
