@@ -1,5 +1,5 @@
 //should be abstracted into a server config file
-require('dotenv').config({silent: true}); 
+require('dotenv').config({silent: true});
 
 const path = require('path');
 const express = require('express');
@@ -75,6 +75,11 @@ app.get('/auth/github/callback',
     console.log(req.isAuthenticated());
     res.redirect('/');
   });
+
+//begin adding new request handlers:
+
+app.post('/user/:username/addToQueue', routes.addToQueue)
+
 
 app.listen(3000, () => console.log('GreenCast listening on port 3000'));
 

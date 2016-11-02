@@ -98,6 +98,15 @@ const topPodcasts = (req, res) => {
   podcastData.getTopPodcasts((podcasts) => res.json(podcasts));
 };
 
+const addToQueue = (req, res) => {
+  console.log('added to queue')
+  const username = req.user.username;
+  const episode = req.body.episode;
+  //if episode does not already exist in database...
+    //Episode.addOne(episode)...then...
+      //User.findOne(username) --> User.addToQueue(episodeId)
+}
+
 
 module.exports = {
   root: root,
@@ -107,5 +116,6 @@ module.exports = {
   getEpisodes: getEpisodes,
   login: login,
   logout: logout,
-  topPodcasts: topPodcasts
+  topPodcasts: topPodcasts,
+  addToQueue: addToQueue
 };
