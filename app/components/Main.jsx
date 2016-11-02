@@ -16,7 +16,7 @@ class Main extends React.Component {
       return (
           <Router history={browserHistory}>
             <Route path='/' component={SearchWrapper} />
-            <Route path='/user/subscriptions' component={UserWrapper} />
+            <Route path='/subscriptions' component={UserWrapper} />
           </Router>
         )
     } else {

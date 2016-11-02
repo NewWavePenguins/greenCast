@@ -36,6 +36,7 @@ app.use(passport.session());
 //basic router
 app.get('/', routes.root);
 
+
 app.param('username', function(req, res, next, username) {
   req.user = {username: username};
   next();
@@ -67,14 +68,20 @@ app.get('/auth/github',
     // function will not be called.
   });
 
+
 app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/' }),
+  passport.authenticate('github', { 
+    failureRedirect: '/'}),
   function(req, res) {
     // Successful authentication, redirect home.
 
     console.log(req.isAuthenticated());
     res.redirect('/');
   });
+
+// app.get('*', function(req, res) {
+//   res.sendFile(path.resolve(__dirname, './public', '_index.html', 'bundle.js')); 
+// });
 
 //begin adding new request handlers:
 
