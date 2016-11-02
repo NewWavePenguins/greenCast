@@ -1,4 +1,5 @@
 const User = require('./db/controllers/user.js');
+const Episode = require('./db/controllers/episode.js')
 const db = require('./db/config.js');
 const Promise = require('bluebird');
 const request = require('request');
