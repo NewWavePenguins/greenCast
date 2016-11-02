@@ -105,7 +105,7 @@ const addToQueue = (req, res) => {
   //if episode does not already exist in database...
     //Episode.addOne(episode)...then...
       //User.findOne(username) --> User.addToQueue(episodeId)
-}
+};
 
 
 module.exports = {

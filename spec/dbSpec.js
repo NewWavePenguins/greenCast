@@ -132,23 +132,23 @@ describe('', function() {
       });
     });
 
-    // it('should remove an episode from the db', done => {
-    //   User.addOne(testUser, (e) => {
-    //     if (e) {
-    //       console.log(e);
-    //     }
-    //     User.removeOne('fred', (err, user) => {
-    //       expect(err).to.not.exist;
-    //       expect(user).to.exist;
+    it('should remove an episode from the db', done => {
+      Episode.addOne(testEpisode, (e) => {
+        if (e) {
+          console.log(e);
+        }
+        Episode.removeOne('test podcast title', (err, episode) => {
+          expect(err).to.not.exist;
+          expect(episode).to.exist;
 
-    //       User.findOne('fred', (error, response) => {
-    //         expect(error).to.not.exist;
-    //         expect(response).to.not.exist;
-    //         done();
-    //       });
-    //     });
-    //   });
-    // });
+          Episode.findOne('test podcast title', (error, response) => {
+            expect(error).to.not.exist;
+            expect(response).to.not.exist;
+            done();
+          });
+        });
+      });
+    });
 
     // it('should add a subscription to a user document', done => {
     //   const channelId = 917918570; // Serial ---> http://itunes.apple.com/lookup?id=917918570
