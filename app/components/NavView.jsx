@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './SearchView.jsx';
+import {Link} from 'react-router';
 
 class NavView extends React.Component {
   constructor(props) {
@@ -11,13 +12,17 @@ class NavView extends React.Component {
       <div style={styles.navBar}>
         <span style={styles.greenCast}>greenCast</span>
         <a style={styles.logout} href='/logout'>Logout <i className="fa fa-sign-out" ariaHidden="true"></i></a>
-        <div style={styles.search}>
-          <Search 
-            stopSearching={this.props.stopSearching} 
-            searching={this.props.searching} 
-            handleSearchInputChange={this.props.handleSearchInputChange}
-          />
-        </div>
+          {this.props.searching ? 
+              <div style={styles.search}>
+                <Search 
+                  stopSearching={this.props.stopSearching} 
+                  searching={this.props.searching} 
+                  handleSearchInputChange={this.props.handleSearchInputChange}
+                />
+              </div>
+              : 
+              <Link to='/search' style={styles.back}>Back</Link>
+          }    
       </div>
     );
   }
@@ -57,6 +62,15 @@ const styles = {
   logout: {
     position: 'absolute',
     left: '90%',
+    top: '0',
+    marginTop: '15px',
+    fontFamily: 'droid sans',
+    textDecoration: 'none',
+    color: 'white'
+  },
+  back: {
+    position: 'absolute',
+    right: '90%',
     top: '0',
     marginTop: '15px',
     fontFamily: 'droid sans',

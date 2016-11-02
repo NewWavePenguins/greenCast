@@ -37,14 +37,14 @@ class SubscribedChannelItemView extends React.Component {
 const styles = {
   cardStyle: {
     marginBottom: '15px',
-    height: '100px',
-    width: '400px',
+    height: '60px',
+    width: '300px',
     position: 'relative',
     background: 'white'
   },
   artwork: {
-    height: '100px',
-    width: '100px',
+    height: '60px',
+    width: '60px',
     boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
     position: 'absolute',
     top: 0,
@@ -56,10 +56,10 @@ const styles = {
   },
   title: {
     fontFamily: 'Droid Sans',
-    fontSize: '20px',
+    fontSize: '15px',
     fontWeight: 'bold',
-    left: '115px',
-    top: '40px',
+    left: '80px',
+    top: '20px',
     position: 'absolute'
   },
   unsubscribe: {
