@@ -126,7 +126,7 @@ describe('', function() {
 
         Episode.findOne('test podcast title', (err, episode) => {
           expect(err).to.not.exist;
-          expect(episode.title).to.equal(testUser.title);
+          expect(episode.title).to.equal(testEpisode.title);
           done();
         });
       });
