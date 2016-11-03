@@ -12,17 +12,17 @@ class NavView extends React.Component {
       <div style={styles.navBar}>
         <span style={styles.greenCast}>greenCast</span>
         <a style={styles.logout} href='/logout'>Logout <i className="fa fa-sign-out" ariaHidden="true"></i></a>
-          {this.props.searching ? 
+          {this.props.searching ?
               <div style={styles.search}>
-                <Search 
-                  stopSearching={this.props.stopSearching} 
-                  searching={this.props.searching} 
+                <Search
+                  stopSearching={this.props.stopSearching}
+                  searching={this.props.searching}
                   handleSearchInputChange={this.props.handleSearchInputChange}
                 />
               </div>
-              : 
-              <Link to='/search' style={styles.back}>Back</Link>
-          }    
+              :
+              <Link to='/search' style={styles.back}><i className="fa fa-search" ariaHidden="true"></i></Link>
+          }
       </div>
     );
   }

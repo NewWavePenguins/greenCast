@@ -89,6 +89,19 @@ class UserWrapper extends React.Component {
     }
   }
 
+  addToQueue(episode) {
+    if (window.username) {
+      $.ajax({
+        url: `/user/${window.username}/queue`,
+        method: 'POST',
+        data: {episode: episode}
+      }).done(data => {
+        // this.setState({subscriptions: data});
+        console.log(data)
+      });
+    }
+  }
+
   render () {
     return (
       <div style={styles.container}>
@@ -102,6 +115,7 @@ class UserWrapper extends React.Component {
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
           showEpisodes={this.showEpisodes.bind(this)}
+          addToQueue={this.addToQueue.bind(this)}
         />
         {this.state.currentFeed ? <FeedView currentFeed={this.state.currentFeed} playThis={this.playThis.bind(this)}/> : null}
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
