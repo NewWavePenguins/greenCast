@@ -43,6 +43,13 @@ class FeedItemView extends React.Component {
        onMouseLeave={this.toggleHover.bind(this)} onClick={this.props.playThis.bind(this, this.props.episode)}
       >
         <div style = {styles.content}>
+        <i style={styles.addToQueue} className="fa fa-plus-circle" ariaHidden="true"></i>
+        {// onClick={this.props.episode.bind(this, this.props.episode.collectionId)} // TO DO: Add OnClick event handler 
+        }
+        <br />
+        <i style={styles.removeFromQueue} className="fa fa-minus-circle" ariaHidden="true"></i>
+        {// onClick={this.props.episode.bind(this, this.props.episode.collectionId)} // TO DO: Add OnClick event handler 
+        }
           <span>{this.props.episode.image ? <img src={this.props.episode.image} style={styles.image} /> : null}</span>
           <h3>{this.props.episode.title}</h3>
           <p style={styles.descriptionStyle}>{this.shrinkDescription(this.props.episode.description)}</p>
@@ -68,6 +75,22 @@ const styles = {
   },
   durationStyle: {
     fontSize: '12px',
+  },
+  addToQueue: {
+    // top: '35px',
+    // left: '150px',
+    // position: 'absolute',
+    color: 'rgb(74,201,67)',
+    fontSize: '22px',
+    cursor: 'pointer'
+  },
+  removeFromQueue: {
+    // top: '35px',
+    // left: '150px',
+    // position: 'absolute',
+    color: 'rgb(251,73,71)',
+    fontSize: '22px',
+    cursor: 'pointer'
   },
   image: {
     width: '400px',
