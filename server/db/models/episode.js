@@ -5,10 +5,7 @@ const episodeSchema = mongoose.Schema({
   description: String,
   duration: Number,
   enclosure: {
-    url: {
-      type: String,
-      unique: true
-    }
+    url: String
   }
 });
 

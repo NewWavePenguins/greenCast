@@ -101,7 +101,7 @@ const topPodcasts = (req, res) => {
 const addToQueue = (req, res) => {
   console.log('added to queue');
   const username = req.user.username;
-  const episode = req.body.episode;
+  const episode = req.body;
   //first, check to see if episode already exists to avoid data duplication
   //(not currently doing this)...then...
   Episode.addOne(episode, (err, ep) => {
