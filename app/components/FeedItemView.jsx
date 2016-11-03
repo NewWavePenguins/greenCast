@@ -58,7 +58,7 @@ const styles = {
     marginBottom: '15px',
     marginLeft: '16px',
     boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-    width: '550px',
+    width: '400px',
     padding: '10px',
     background: 'white'
   },
@@ -70,7 +70,7 @@ const styles = {
     fontSize: '12px',
   },
   image: {
-    width: '550px',
+    width: '400px',
   },
   shadow: {
     boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',

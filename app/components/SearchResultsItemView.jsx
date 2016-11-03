@@ -37,14 +37,14 @@ const styles = {
   cardStyle: {
     marginBottom: '15px',
     marginLeft: '15px',
-    height: '100px',
-    width: '400px',
+    height: '60px',
+    width: '300px',
     position: 'relative',
     background: 'white'
   },
   artwork: {
-    height: '100px',
-    width: '100px',
+    height: '60px',
+    width: '60px',
     boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
     position: 'absolute',
     top: 0,
@@ -56,18 +56,18 @@ const styles = {
   },
   title: {
     fontFamily: 'Droid Sans',
-    fontSize: '20px',
+    fontSize: '15px',
     fontWeight: 'bold',
-    left: '115px',
-    top: '40px',
+    left: '80px',
+    top: '20px',
     position: 'absolute'
   },
   subscribe: {
-    top: '70px',
-    left: '370px',
+    top: '35px',
+    left: '275px',
     position: 'absolute',
     color: 'rgb(74,201,67)',
-    fontSize: '40px',
+    fontSize: '22px',
     cursor: 'pointer'
   },
   shadow: {
