@@ -101,7 +101,7 @@ const topPodcasts = (req, res) => {
 const addToQueue = (req, res) => {
   console.log('added to queue');
   const username = req.user.username;
-  const episode = req.body;
+  const episode = req.body.episode;
   console.log(episode)
   //first, check to see if episode already exists to avoid data duplication
   //(not currently doing this)...then...
@@ -122,7 +122,7 @@ const addToQueue = (req, res) => {
 const removeFromQueue = (req, res) => {
   console.log('removed from queue')
   const username = req.user.username;
-  const episode = req.body;
+  const episode = req.body
   const episodeId = episode._id;
   User.findOne(username, (err, user) => {
     //remove episode id from users queue
