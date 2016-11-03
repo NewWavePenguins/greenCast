@@ -1,4 +1,4 @@
-import React from 'react';   
+import React from 'react';
 import NavView from './NavView.jsx';
 import UserView from './UserView.jsx';
 import FeedView from './FeedView.jsx';
@@ -16,7 +16,6 @@ class UserWrapper extends React.Component {
       nowPlayingTitle: null,
       nowPlaying: null
     };
-
   }
 
   subscribe(channelId) {
@@ -116,6 +115,6 @@ const styles = {
   container: {
     marginTop: '50px'
   }
-};  
+};
 
 export default UserWrapper;

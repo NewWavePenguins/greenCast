@@ -99,13 +99,70 @@ const topPodcasts = (req, res) => {
 };
 
 const addToQueue = (req, res) => {
-  console.log('added to queue')
+  console.log('added to queue');
   const username = req.user.username;
   const episode = req.body.episode;
+  //first, check to see if episode already exists to avoid data duplication
+  //(not currently doing this)...then...
+  Episode.addOne(episode, (err, ep) => {
+    if (err) { return res.send(err); }
+    User.findOne(username, (err, user) => {
+      user.queue.push(ep);
+      user.save(function(err) {
+        if (err) { return res.send(err); }
+        console.log('updated user queue');
+      })
+    })
+  })
+};
+
+
+const removeFromQueue = (req, res) => {
+  console.log('removed from queue')
+  const username = req.user.username;
+  const episode = req.body.episode;
+  // User.findOne(username, (err, user) => {
+    //remove (splice) episode id from queue array
+  // })
   //if episode does not already exist in database...
     //Episode.addOne(episode)...then...
       //User.findOne(username) --> User.addToQueue(episodeId)
 };
+
+const getQueue = (req, res) => {
+  console.log('get queue')
+  const username = req.user.username;
+  //find user
+  User.findOne(username, (err, user) => {
+    //from users queue, generate array of episode objects and send that back
+    user.populate('queue')
+    .exec((err, episodes) => {
+      if (err) { return handleError(err); }
+      res.status(200).json(episodes);
+    })
+  })
+}
+
+// population
+// exports.postComment = function(req,res) {
+//   // XXX: this all assumes that `postId` is a valid id.
+//   var comment = new Comment({
+//     content : req.body.content,
+//     post    : req.params.postId,
+//     user    : req.user._id
+//   });
+//   comment.save(function(err, comment) {
+//     if (err) return res.send(err);
+//     Post.findById(req.params.postId, function(err, post) {
+//       if (err) return res.send(err);
+//       post.commentIds.push(comment);
+//       post.save(function(err) {
+//         if (err) return res.send(err);
+//         res.json({ status : 'done' });
+//       });
+//     });
+//   });
+// };
 
 
 module.exports = {
@@ -117,5 +174,7 @@ module.exports = {
   login: login,
   logout: logout,
   topPodcasts: topPodcasts,
-  addToQueue: addToQueue
+  addToQueue: addToQueue,
+  removeFromQueue: removeFromQueue,
+  getQueue: getQueue
 };
