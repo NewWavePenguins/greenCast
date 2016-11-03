@@ -147,7 +147,7 @@ class UserWrapper extends React.Component {
           showEpisodes={this.showEpisodes.bind(this)}
         />
         {this.state.currentFeed ? <FeedView currentFeed={this.state.currentFeed} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null}
-        {this.state.queue ? <FeedView queue={this.state.queue} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null}
+        {/* {this.state.queue ? <FeedView queue={this.state.queue} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null} */}
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
       </div>
       )
