@@ -121,7 +121,15 @@ const addToQueue = (req, res) => {
 const removeFromQueue = (req, res) => {
   console.log('removed from queue')
   const username = req.user.username;
-  const episode = req.body.episode;
+  const episode = req.body;
+  const episodeId = episode._id;
+  User.findOne(username, (err, user) => {
+    //remove episode id from users queue
+    user.queue.pull(episodeId)
+    //according to mongoose docs, no need to save if only pulling once.
+    //need to verify
+    res.sendStatus(202).end()
+  })
   // User.findOne(username, (err, user) => {
     //remove (splice) episode id from queue array
   // })
