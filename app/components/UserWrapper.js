@@ -30,6 +30,7 @@ class UserWrapper extends React.Component {
   }
 
   playThis(episode) {
+    console.log(episode);
     console.log(episode.title, ' is loading, be patient!');
     this.setState({
       nowPlaying: episode.enclosure.url,

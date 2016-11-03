@@ -101,7 +101,7 @@ const topPodcasts = (req, res) => {
 const addToQueue = (req, res) => {
   console.log('added to queue');
   const username = req.user.username;
-  const episode = req.body.episode;
+  const episode = req.body;
   //first, check to see if episode already exists to avoid data duplication
   //(not currently doing this)...then...
   Episode.addOne(episode, (err, ep) => {
@@ -111,6 +111,7 @@ const addToQueue = (req, res) => {
       user.save(function(err) {
         if (err) { return res.send(err); }
         console.log('updated user queue');
+        res.sendStatus(201).end();
       })
     })
   })
@@ -120,7 +121,15 @@ const addToQueue = (req, res) => {
 const removeFromQueue = (req, res) => {
   console.log('removed from queue')
   const username = req.user.username;
-  const episode = req.body.episode;
+  const episode = req.body;
+  const episodeId = episode._id;
+  User.findOne(username, (err, user) => {
+    //remove episode id from users queue
+    user.queue.pull(episodeId);
+    //according to mongoose docs, no need to save if only pulling once.
+    //need to verify
+    res.sendStatus(202).end();
+  })
   // User.findOne(username, (err, user) => {
     //remove (splice) episode id from queue array
   // })
