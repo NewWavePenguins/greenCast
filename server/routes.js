@@ -131,6 +131,16 @@ const removeFromQueue = (req, res) => {
 
 const getQueue = (req, res) => {
   console.log('get queue')
+  const username = req.user.username;
+  //find user
+  User.findOne(username, (err, user) => {
+    //from users queue, generate array of episode objects and send that back
+    user.populate('queue')
+    .exec((err, episodes) => {
+      if (err) { return handleError(err); }
+      res.status(200).json(episodes);
+    })
+  })
 }
 
 // population
