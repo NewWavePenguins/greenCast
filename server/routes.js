@@ -111,6 +111,7 @@ const addToQueue = (req, res) => {
       user.save(function(err) {
         if (err) { return res.send(err); }
         console.log('updated user queue');
+        res.sendStatus(201).end();
       })
     })
   })
