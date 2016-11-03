@@ -22,7 +22,7 @@ class FeedView extends React.Component {
         <div style={styles.feedView}> {this.state.feedTitle}
           {
             this.state.episodeList.map((episode, index) =>
-              <FeedItemView key={index} episode = {episode}/>
+              <FeedItemView key={index} episode = {episode} />
             )
           }
         </div>
@@ -59,7 +59,7 @@ class FeedView extends React.Component {
         <span>{this.props.currentFeedTitle}</span>
         {
           this.state.episodeList.map((episode, index) =>
-            <FeedItemView key={index} episode = {episode} playThis={this.props.playThis}/>
+            <FeedItemView key={index} episode = {episode} playThis={this.props.playThis} addToQueue={this.props.addToQueue}/>
           )
         }
       </div>

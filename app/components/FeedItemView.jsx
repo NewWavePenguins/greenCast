@@ -39,16 +39,15 @@ class FeedItemView extends React.Component {
   render() {
     let hover = this.state.hover ? styles.deepShadow : styles.shadow;
     return (
-      <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)} 
+      <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)}
        onMouseLeave={this.toggleHover.bind(this)} onClick={this.props.playThis.bind(this, this.props.episode)}
       >
-        <div style = {styles.content}>
-        <i style={styles.addToQueue} className="fa fa-plus-circle" ariaHidden="true"></i>
-        {// onClick={this.props.episode.bind(this, this.props.episode.collectionId)} // TO DO: Add OnClick event handler 
-        }
+        <div style={styles.content}>
+        <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.episode)} className="fa fa-plus-circle" ariaHidden="true"></i>
+
         <br />
         <i style={styles.removeFromQueue} className="fa fa-minus-circle" ariaHidden="true"></i>
-        {// onClick={this.props.episode.bind(this, this.props.episode.collectionId)} // TO DO: Add OnClick event handler 
+        {// onClick={this.props.episode.bind(this, this.props.episode.collectionId)} // TO DO: Add OnClick event handler
         }
           <span>{this.props.episode.image ? <img src={this.props.episode.image} style={styles.image} /> : null}</span>
           <h3>{this.props.episode.title}</h3>
