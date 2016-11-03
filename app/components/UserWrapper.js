@@ -16,7 +16,6 @@ class UserWrapper extends React.Component {
       nowPlayingTitle: null,
       nowPlaying: null
     };
-
   }
 
   subscribe(channelId) {
