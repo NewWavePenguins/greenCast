@@ -13,6 +13,7 @@ class UserWrapper extends React.Component {
       searching: false,
       subscriptions: [],
       currentFeed: null,
+      queue: null,
       nowPlayingTitle: null,
       nowPlaying: null
     };
@@ -97,7 +98,36 @@ class UserWrapper extends React.Component {
         data: {episode: episode}
       }).done(data => {
         // this.setState({subscriptions: data});
-        console.log(data)
+        console.log('episode', episode)
+        console.log('data', data)
+      });
+    }
+  }
+
+  removeFromQueue(episode) {
+    if (window.username) {
+      $.ajax({
+        url: `/user/${window.username}/queue`,
+        method: 'DELETE',
+        data: {episode: episode}
+      }).done(data => {
+        // this.setState({subscriptions: data});
+        console.log('episode', episode)
+        console.log('data', data)
+      });
+    }
+  }
+
+  getQueue() {
+    if (window.username) {
+      $.ajax({
+        url: `/user/${window.username}/queue`,
+        method: 'GET',
+        dataType: 'JSON'
+      }).done(data => {
+        // this.setState({subscriptions: data});
+        console.log('episode', episode)
+        console.log('data', data)
       });
     }
   }
@@ -115,9 +145,9 @@ class UserWrapper extends React.Component {
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
           showEpisodes={this.showEpisodes.bind(this)}
-          addToQueue={this.addToQueue.bind(this)}
         />
-        {this.state.currentFeed ? <FeedView currentFeed={this.state.currentFeed} playThis={this.playThis.bind(this)}/> : null}
+        {this.state.currentFeed ? <FeedView currentFeed={this.state.currentFeed} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null}
+        {this.state.queue ? <FeedView queue={this.state.queue} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null}
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
       </div>
       )

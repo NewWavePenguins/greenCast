@@ -42,12 +42,9 @@ class FeedItemView extends React.Component {
       <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)}
        onMouseLeave={this.toggleHover.bind(this)} onClick={this.props.playThis.bind(this, this.props.episode)}
       >
-        <div style = {styles.content}>
-        <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.channel.collectionId)} className="fa fa-plus-circle" ariaHidden="true"></i>
+        <div style={styles.content}>
+        <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.episode)} className="fa fa-plus-circle" ariaHidden="true"></i>
 
-        { //onClick={this.props.addToQueue.bind(this, this.props.episode)}
-      // TODO: Add OnClick event handler
-    }
         <br />
         <i style={styles.removeFromQueue} className="fa fa-minus-circle" ariaHidden="true"></i>
         {// onClick={this.props.episode.bind(this, this.props.episode.collectionId)} // TO DO: Add OnClick event handler

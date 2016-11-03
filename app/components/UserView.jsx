@@ -8,7 +8,6 @@ const UserView = (props) => {
           subscriptions={props.subscriptions}
           unsubscribe={props.unsubscribe}
           showEpisodes={props.showEpisodes}
-          addToQueue={props.addToQueue}
         />
       </div>
     </div>
