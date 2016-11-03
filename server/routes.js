@@ -99,7 +99,7 @@ const topPodcasts = (req, res) => {
 };
 
 const addToQueue = (req, res) => {
-  console.log('added to queue')
+  console.log('added to queue');
   const username = req.user.username;
   const episode = req.body.episode;
   //first, check to see if episode already exists to avoid data duplication
@@ -110,7 +110,7 @@ const addToQueue = (req, res) => {
       user.queue.push(ep);
       user.save(function(err) {
         if (err) { return res.send(err); }
-        console.log('updated user queue')
+        console.log('updated user queue');
       })
     })
   })
@@ -121,11 +121,17 @@ const removeFromQueue = (req, res) => {
   console.log('removed from queue')
   const username = req.user.username;
   const episode = req.body.episode;
+  // User.findOne(username, (err, user) => {
+    //remove (splice) episode id from queue array
+  // })
   //if episode does not already exist in database...
     //Episode.addOne(episode)...then...
       //User.findOne(username) --> User.addToQueue(episodeId)
 };
 
+const getQueue = (req, res) => {
+  console.log('get queue')
+}
 
 // population
 // exports.postComment = function(req,res) {
@@ -149,8 +155,6 @@ const removeFromQueue = (req, res) => {
 // };
 
 
-
-
 module.exports = {
   root: root,
   getSubscriptions: getSubscriptions,
@@ -161,5 +165,6 @@ module.exports = {
   logout: logout,
   topPodcasts: topPodcasts,
   addToQueue: addToQueue,
-  removeFromQueue: removeFromQueue
+  removeFromQueue: removeFromQueue,
+  getQueue: getQueue
 };
