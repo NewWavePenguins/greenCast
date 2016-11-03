@@ -127,8 +127,8 @@ class UserWrapper extends React.Component {
         dataType: 'JSON'
       }).done(data => {
         this.setState({queue: data});
-        // console.log('episode', episode)
-        // console.log('data', data)
+        console.log('episode', episode)
+        console.log('data', data)
       });
     }
   }
@@ -142,7 +142,7 @@ class UserWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searching={this.state.searching}
         />
-        
+
         <UserView
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
