@@ -12,6 +12,7 @@ class QueueView extends React.Component {
     }
   }
 
+
   render() {
     if (this.state.queueList.length === 0) {
       return (
@@ -30,7 +31,22 @@ class QueueView extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      queueList: this.props.queue
+    })
+    // const context = this;
+    // const data = this.props.getQueue();
+    // data.done(results => {
+    //   context.setState({
+    //     queueList: this.props.getQueue()
+    //   });
+    // });
+  }
+
 }
+
+
 
 const styles = {
   feedStyle: {

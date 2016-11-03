@@ -12,8 +12,13 @@ function findOne(episodeTitle, cb) {
   EpisodeModel.findOne({title: episodeTitle}, cb);
 }
 
+function findAll(array, cb) {
+  EpisodeModel.find( {_id: {$in:array}}, cb);
+}
+
 module.exports = {
   addOne: addOne,
   removeOne: removeOne,
-  findOne: findOne
+  findOne: findOne,
+  findAll: findAll
 };

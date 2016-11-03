@@ -145,11 +145,16 @@ const getQueue = (req, res) => {
   //find user
   User.findOne(username, (err, user) => {
     //from users queue, generate array of episode objects and send that back
-    user.populate('queue')
-    .exec((err, episodes) => {
+    console.log(user)
+    Episode.findAll(user.queue, (err, episodes) => {
       if (err) { return handleError(err); }
       res.status(200).json(episodes);
     })
+    // user.populate('queue')
+    // .exec((err, episodes) => {
+    //   if (err) { return handleError(err); }
+    //   res.status(200).json(episodes);
+    // })
   })
 }
 
