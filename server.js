@@ -75,14 +75,16 @@ app.get('/auth/github/callback',
   });
 
 //basic router
-app.get('*', routes.root);
 
 //begin adding new request handlers:
 
 app.post('/user/:username/queue', routes.addToQueue);
 app.delete('/user/:username/queue', routes.removeFromQueue);
+
 app.get('/user/:username/queue', routes.getQueue);
 
+
+app.get('*', routes.root);
 
 app.listen(3000, () => console.log('GreenCast listening on port 3000'));
 

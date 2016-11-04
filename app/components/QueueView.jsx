@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import QueueItemView from './QueueItemView.jsx';
+import Promise from 'bluebird';
 
 class QueueView extends React.Component {
 
@@ -10,6 +11,30 @@ class QueueView extends React.Component {
     this.state = {
       queueList: []
     }
+  }
+
+  // get queue
+
+    // set state with new queue
+
+  //component will mount
+
+  getQueue() {
+    if (window.username) {
+      $.ajax({
+        url: `/user/${window.username}/queue`,
+        method: 'GET',
+        dataType: 'JSON'
+      }).done(data => {
+        console.log(data);
+        this.setState({queueList: data});
+      });
+    }
+  }
+
+  //called before render
+  componentWillMount() {
+    this.getQueue()
   }
 
   render() {
@@ -22,7 +47,7 @@ class QueueView extends React.Component {
         <div style={styles.queueView}> {this.state.feedTitle}
           {
             this.state.queueList.map((episode, index) =>
-              <QueueItemView key={index} episode = {episode} />
+              <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue}/>
             )
           }
         </div>
@@ -30,7 +55,51 @@ class QueueView extends React.Component {
     }
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.queue !== this.props.queue) {
+  //     const context = this;
+  //     const requests = this.props.subscriptions.map(id => this.requestPodcastData(id));
+  //     Promise.all(requests).done(results => {
+  //       context.setState({
+  //         requests: results.map(data => data.results[0])
+  //       });
+  //     });
+  //   }
+  // }
+
+  componentDidMount() {
+    var context = this;
+    const requests = this.props.queue
+    Promise.all(requests).done(() => {
+      context.setState({
+         queueList: context.props.queue
+      })
+    })
+    // this.props.getQueue();
+    // this.setState({
+    // const context = this;
+    // const requests = this.props.getQueue();
+    // Promise.all(requests).done(results => {
+    //   context.setState({
+    //     queueList: results
+    //   })
+    // })
+
+    // this.setState({
+    //   queueList: this.props.queue
+    // })
+    // const context = this;
+    // const data = this.props.getQueue();
+    // data.done(results => {
+    //   context.setState({
+    //     queueList: results
+    //   });
+    // });
+  }
+
 }
+
+
 
 const styles = {
   feedStyle: {

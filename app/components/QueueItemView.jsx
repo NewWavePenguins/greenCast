@@ -10,8 +10,34 @@ class QueueItemView extends React.Component {
     };
   }
 
+  shrinkDescription(desc) {
+    let summary = desc + '';
+    summary = summary.split('<')[0];
+    return summary.substring(0, 325) + '...';
+  }
+
+  timeEditor(time) {
+    let mins = Math.floor(time / 60);
+    let secs = time % 60;
+    let hrs = Math.floor(time / 3600);
+    mins = Math.floor((time % 3600) / 60);
+    secs = time % 60;
+    let podLength = '';
+    if (hrs > 0) {
+      podLength += '' + hrs + ':' + (mins < 10 ? '0' : '');
+    }
+    podLength += '' + mins + ':' + (secs < 10 ? '0' : '');
+    podLength += '' + secs;
+    return podLength;
+  }
+
+  toggleHover() {
+    this.setState({hover: !this.state.hover});
+  }
+
   render() {
     let hover = this.state.hover ? styles.deepShadow : styles.shadow;
+    console.log(this.props.episode);
     return (
       <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)}
        onMouseLeave={this.toggleHover.bind(this)} onClick={this.props.playThis.bind(this, this.props.episode)}
