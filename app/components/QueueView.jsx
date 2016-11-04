@@ -26,7 +26,6 @@ class QueueView extends React.Component {
         method: 'GET',
         dataType: 'JSON'
       }).done(data => {
-        console.log(data);
         this.setState({queueList: data});
       });
     }

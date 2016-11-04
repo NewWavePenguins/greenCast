@@ -1,5 +1,5 @@
 const User = require('./db/controllers/user.js');
-const Episode = require('./db/controllers/episode.js')
+const Episode = require('./db/controllers/episode.js');
 const db = require('./db/config.js');
 const Promise = require('bluebird');
 const request = require('request');
@@ -99,10 +99,9 @@ const topPodcasts = (req, res) => {
 };
 
 const addToQueue = (req, res) => {
-  console.log('added to queue');
   const username = req.user.username;
   const episode = req.body.episode;
-  console.log(episode)
+
   //first, check to see if episode already exists to avoid data duplication
   //(not currently doing this)...then...
   Episode.addOne(episode, (err, ep) => {
@@ -111,26 +110,26 @@ const addToQueue = (req, res) => {
       user.queue.push(ep);
       user.save(function(err) {
         if (err) { return res.send(err); }
-        console.log('updated user queue');
         res.sendStatus(201).end();
-      })
-    })
-  })
+      });
+    });
+  });
 };
 
 
 const removeFromQueue = (req, res) => {
-  console.log('removed from queue')
+  console.log('removed from queue');
   const username = req.user.username;
-  const episode = req.body
+  const episode = req.body.episode;
   const episodeId = episode._id;
   User.findOne(username, (err, user) => {
     //remove episode id from users queue
     user.queue.pull(episodeId);
     //according to mongoose docs, no need to save if only pulling once.
     //need to verify
+  }).then(() => {
     res.sendStatus(202).end();
-  })
+  });
   // User.findOne(username, (err, user) => {
     //remove (splice) episode id from queue array
   // })
@@ -140,23 +139,23 @@ const removeFromQueue = (req, res) => {
 };
 
 const getQueue = (req, res) => {
-  console.log('get queue')
+  console.log('get queue');
   const username = req.user.username;
   //find user
   User.findOne(username, (err, user) => {
     //from users queue, generate array of episode objects and send that back
-    console.log(user)
+    console.log(user);
     Episode.findAll(user.queue, (err, episodes) => {
       if (err) { return handleError(err); }
       res.status(200).json(episodes);
-    })
+    });
     // user.populate('queue')
     // .exec((err, episodes) => {
     //   if (err) { return handleError(err); }
     //   res.status(200).json(episodes);
     // })
-  })
-}
+  });
+};
 
 // population
 // exports.postComment = function(req,res) {
