@@ -48,6 +48,10 @@ const removeSubscription = (req, res) => {
   });
 };
 
+// const addPodcast = (req, res) => {
+//   let title = req.body.title;
+  
+// };
 
 // routes for channel data
 const getEpisodes = (req, res) => {

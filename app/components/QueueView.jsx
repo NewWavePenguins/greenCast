@@ -106,7 +106,7 @@ const styles = {
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    marginRight: '10%',
+    // marginRight: '10%',
     marginTop: '15px',
     overflow: 'auto'
   }
