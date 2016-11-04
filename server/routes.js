@@ -158,34 +158,10 @@ const getQueue = (req, res) => {
       if (err) { return handleError(err); }
       res.status(200).json(episodes);
     });
-    // user.populate('queue')
-    // .exec((err, episodes) => {
-    //   if (err) { return handleError(err); }
-    //   res.status(200).json(episodes);
-    // })
   });
 };
 
-// population
-// exports.postComment = function(req,res) {
-//   // XXX: this all assumes that `postId` is a valid id.
-//   var comment = new Comment({
-//     content : req.body.content,
-//     post    : req.params.postId,
-//     user    : req.user._id
-//   });
-//   comment.save(function(err, comment) {
-//     if (err) return res.send(err);
-//     Post.findById(req.params.postId, function(err, post) {
-//       if (err) return res.send(err);
-//       post.commentIds.push(comment);
-//       post.save(function(err) {
-//         if (err) return res.send(err);
-//         res.json({ status : 'done' });
-//       });
-//     });
-//   });
-// };
+
 
 
 module.exports = {

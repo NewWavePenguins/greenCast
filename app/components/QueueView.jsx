@@ -13,11 +13,6 @@ class QueueView extends React.Component {
     }
   }
 
-  // get queue
-
-    // set state with new queue
-
-  //component will mount
 
   getQueue() {
     if (window.username) {
@@ -54,17 +49,6 @@ class QueueView extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.queue !== this.props.queue) {
-  //     const context = this;
-  //     const requests = this.props.subscriptions.map(id => this.requestPodcastData(id));
-  //     Promise.all(requests).done(results => {
-  //       context.setState({
-  //         requests: results.map(data => data.results[0])
-  //       });
-  //     });
-  //   }
-  // }
 
   componentDidMount() {
     var context = this;
@@ -74,26 +58,7 @@ class QueueView extends React.Component {
          queueList: context.props.queue
       })
     })
-    // this.props.getQueue();
-    // this.setState({
-    // const context = this;
-    // const requests = this.props.getQueue();
-    // Promise.all(requests).done(results => {
-    //   context.setState({
-    //     queueList: results
-    //   })
-    // })
 
-    // this.setState({
-    //   queueList: this.props.queue
-    // })
-    // const context = this;
-    // const data = this.props.getQueue();
-    // data.done(results => {
-    //   context.setState({
-    //     queueList: results
-    //   });
-    // });
   }
 
 }
