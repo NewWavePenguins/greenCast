@@ -79,11 +79,11 @@ class FeedView extends React.Component {
 
 const styles = {
   feedStyle: {
-    float: 'right',
+    // float: 'left',
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    // marginRight: '40%',
+    marginLeft: '30%',
     marginTop: '15px',
     overflow: 'auto'
   }

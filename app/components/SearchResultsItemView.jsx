@@ -26,7 +26,7 @@ class SearchResultsItemView extends React.Component {
           </div>
         </div>
         <div>
-        <i style={styles.subscribe} onClick={this.props.subscribe.bind(this, this.props.podcast.collectionId)} className="fa fa-plus-circle" ariaHidden="true"></i>
+        <i style={styles.subscribe} onClick={this.props.subscribe.bind(this, this.props.podcast.collectionId, this.props.podcast)} className="fa fa-plus-circle" ariaHidden="true"></i>
         </div>
       </div>
     );

@@ -14,19 +14,28 @@ class SearchWrapper extends React.Component {
     };
   }
 
-  subscribe(channelId) {
+
+  addPodcast(podcast) {
+
+  }
+
+  subscribe(collectionId, podcast) {
     $.ajax({
       url: `/user/${window.username}/subscriptions`,
       method: 'POST',
-      data: {channel: channelId}
+      data: {collectionId: collectionId,
+             collectionName: podcast.collectionName,
+             img: podcast.artworkUrl100
+             }
     }).done(() => {
-      console.log('subscribed to', channelId);
+      console.log('subscribed to', collectionId);
       this.refreshSubscriptions();
     });
   }
 
   getPodcasts(query) {
     let search = this.requestPodcastData(query).done(data => {
+      // console.log('DATA',data);
       this.setState({searchResults: data.results, searching: true});
     });
   }
@@ -73,6 +82,7 @@ class SearchWrapper extends React.Component {
           searchResults={this.state.searchResults}
           subscribe={this.subscribe.bind(this)}
           subscriptions={this.state.subscriptions}
+          addPodcast={this.addPodcast.bind(this)}
         />
       </div>
       ) 
