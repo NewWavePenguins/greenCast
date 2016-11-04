@@ -20,16 +20,16 @@ class UserWrapper extends React.Component {
     };
   }
 
-  subscribe(channelId) {
-    $.ajax({
-      url: `/user/${window.username}/subscriptions`,
-      method: 'POST',
-      data: {channel: channelId}
-    }).done(() => {
-      console.log('subscribed to', channelId);
-      this.refreshSubscriptions();
-    });
-  }
+  // subscribe(channelId) {
+  //   $.ajax({
+  //     url: `/user/${window.username}/subscriptions`,
+  //     method: 'POST',
+  //     data: {channel: channelId}
+  //   }).done(() => {
+  //     console.log('subscribed to', channelId);
+  //     this.refreshSubscriptions();
+  //   });
+  // }
 
   playThis(episode) {
     console.log(episode);

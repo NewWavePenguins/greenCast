@@ -15,10 +15,6 @@ class SearchWrapper extends React.Component {
   }
 
 
-  addPodcast(podcast) {
-
-  }
-
   subscribe(collectionId, podcast) {
     $.ajax({
       url: `/user/${window.username}/subscriptions`,
@@ -35,7 +31,6 @@ class SearchWrapper extends React.Component {
 
   getPodcasts(query) {
     let search = this.requestPodcastData(query).done(data => {
-      // console.log('DATA',data);
       this.setState({searchResults: data.results, searching: true});
     });
   }
@@ -60,13 +55,19 @@ class SearchWrapper extends React.Component {
         dataType: 'JSON'
       }).done(data => {
         this.setState({subscriptions: data});
-
       });
     }
   }
 
   componentDidMount() {
     // load recommended podcasts
+    $.ajax({
+      url: `/user/${window.username}/recommended`,
+      method: 'GET',
+      dataType: 'JSON'
+    }).done(data => {
+      this.setState({subscriptions: data});
+    });
   }
 
   render () {
@@ -82,7 +83,6 @@ class SearchWrapper extends React.Component {
           searchResults={this.state.searchResults}
           subscribe={this.subscribe.bind(this)}
           subscriptions={this.state.subscriptions}
-          addPodcast={this.addPodcast.bind(this)}
         />
       </div>
       ) 
