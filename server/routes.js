@@ -1,5 +1,6 @@
 const User = require('./db/controllers/user.js');
 const Episode = require('./db/controllers/episode.js');
+const Podcast = require('./db/controllers/podcast.js');
 const db = require('./db/config.js');
 const Promise = require('bluebird');
 const request = require('request');
@@ -27,12 +28,25 @@ const getSubscriptions = (req, res) => {
 const addSubscription = (req, res) => {
   // adds a channel to a user's subscriptions
   var username = req.user.username;
-  var subscription = req.body.channel;
-  User.addSubscription(username, subscription, function(err, user) {
+  var subscription = req.body.collectionId;
+  let podcast = req.body;
+  User.addSubscription(username, subscription, podcast, function(err, user) {
     if (err) {
       console.log('The add Subscription error is: ', err);
     }
+    let newPodcast = {
+      id: subscription,
+      title: podcast.collectionName,
+      img: podcast.img,
+      recommended: false,
+      comment: ''
+    };
+    Podcast.addOne(newPodcast, function(err, npc) {
+      if (err) {
+        console.log('The add Podcast error is', err);
+      }
     res.sendStatus(201).end();
+    })
   });
 };
 
@@ -48,10 +62,6 @@ const removeSubscription = (req, res) => {
   });
 };
 
-// const addPodcast = (req, res) => {
-//   let title = req.body.title;
-  
-// };
 
 // routes for channel data
 const getEpisodes = (req, res) => {

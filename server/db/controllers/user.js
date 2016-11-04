@@ -1,5 +1,6 @@
 const UserModel = require('../models/user.js');
 
+
 function findOne(username, cb) {
   UserModel.findOne({username: username}, cb);
 }
@@ -12,7 +13,7 @@ function removeOne(username, cb) {
   UserModel.findOneAndRemove({username: username}, cb);
 }
 
-function addSubscription(username, subscription, cb) {
+function addSubscription(username, subscription, podcast, cb) {
   UserModel.findOne({username: username}, (err, user) => {
     if (err) {
       cb(err, null);

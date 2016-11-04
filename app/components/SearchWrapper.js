@@ -19,17 +19,18 @@ class SearchWrapper extends React.Component {
 
   }
 
-  subscribe(channelId, podcast) {
+  subscribe(collectionId, podcast) {
     $.ajax({
       url: `/user/${window.username}/subscriptions`,
       method: 'POST',
-      data: {channel: channelId}
+      data: {collectionId: collectionId,
+             collectionName: podcast.collectionName,
+             img: podcast.artworkUrl100
+             }
     }).done(() => {
-      console.log('subscribed to', channelId);
+      console.log('subscribed to', collectionId);
       this.refreshSubscriptions();
     });
-    
-    console.log('INSIDE ADDPODCAST', podcast);
   }
 
   getPodcasts(query) {

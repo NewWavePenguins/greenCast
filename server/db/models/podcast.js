@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 // const Schema = mongoose.Schema
 
 const podcastSchema = mongoose.Schema({
-  itunesId: {
+  id: {
     type: Number,
     unique: true
   },
   title: String,
-  url: String,
-  recommended: false,
+  img: String,
+  recommended: Boolean,
   comment: String
 });
 

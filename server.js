@@ -41,6 +41,9 @@ app.param('username', function(req, res, next, username) {
 // returns a user's subscriptions
 app.get('/user/:username/subscriptions', routes.getSubscriptions);
 
+// returns all recommended subscriptions
+app.get('/user/:username/recommended', routes.getSubscriptions);
+
 // adds a new channel to a user's subscriptions
 app.post('/user/:username/subscriptions', routes.addSubscription);
 
