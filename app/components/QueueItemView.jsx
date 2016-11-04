@@ -37,7 +37,6 @@ class QueueItemView extends React.Component {
 
   render() {
     let hover = this.state.hover ? styles.deepShadow : styles.shadow;
-    console.log(this.props.episode);
     return (
       <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)}
        onMouseLeave={this.toggleHover.bind(this)} onClick={this.props.playThis.bind(this, this.props.episode)}
