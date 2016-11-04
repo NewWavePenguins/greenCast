@@ -39,11 +39,11 @@ class QueueView extends React.Component {
   render() {
     if (this.state.queueList.length === 0) {
       return (
-        <div style={styles.queueView}> No episodes in queue </div>
+        <div style={styles.queueStyle}> No episodes in queue </div>
       );
     } else {
       return (
-        <div style={styles.queueView}> {this.state.feedTitle}
+        <div style={styles.queueStyle}> {this.state.feedTitle}
           {
             this.state.queueList.map((episode, index) =>
               <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue}/>
@@ -101,12 +101,12 @@ class QueueView extends React.Component {
 
 
 const styles = {
-  feedStyle: {
+  queueStyle: {
     float: 'right',
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    marginRight: '40%',
+    marginRight: '10%',
     marginTop: '15px',
     overflow: 'auto'
   }

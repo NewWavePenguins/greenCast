@@ -83,7 +83,7 @@ const styles = {
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    marginRight: '40%',
+    // marginRight: '40%',
     marginTop: '15px',
     overflow: 'auto'
   }
