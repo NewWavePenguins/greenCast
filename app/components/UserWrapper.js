@@ -76,7 +76,7 @@ class UserWrapper extends React.Component {
 
   componentDidMount() {
     this.refreshSubscriptions();
-    this.getQueue();
+    //this.getQueue();
   }
 
   refreshSubscriptions() {
@@ -127,9 +127,9 @@ class UserWrapper extends React.Component {
         method: 'GET',
         dataType: 'JSON'
       }).done(data => {
-        console.log(data);
-
+        //console.log(data);
         this.setState({queue: data});
+        //return data;
         // console.log('episode', episode)
         // console.log('data', data)
       });
@@ -159,7 +159,9 @@ class UserWrapper extends React.Component {
           playThis={this.playThis.bind(this)}
           removeFromQueue={this.removeFromQueue.bind(this)}
           getQueue={this.getQueue.bind(this)}
+          playThis={this.playThis.bind(this)}
           />
+
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
       </div>
       )
