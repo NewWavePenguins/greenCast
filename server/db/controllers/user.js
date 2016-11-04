@@ -74,7 +74,7 @@ function addToQueue(username, episode, cb) {
   });
 }
 
-function removeFromQueue(username, episode, cb) {
+function removeFromQueue(username, episodeId, cb) {
   UserModel.findOne({username: username}, (err, user) => {
     if (err) {
       cb(err, null);
@@ -84,9 +84,8 @@ function removeFromQueue(username, episode, cb) {
       cb(new Error(`username ${username} not found`), null);
       return;
     }
-
     const queue = user.queue;
-    const index = queue.indexOf(episode);
+    const index = queue.indexOf(episodeId);
     if (index < 0) {
       cb(new Error(`episode ${episdode} not found in ${username}'s queue'`), null);
       return;

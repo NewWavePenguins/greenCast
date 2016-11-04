@@ -136,28 +136,15 @@ const removeFromQueue = (req, res) => {
   const username = req.user.username;
   const episode = req.body.episode;
   const episodeId = episode._id;
-  User.findOne(username, (err, user) => {
-    //remove episode id from users queue
 
-    // user.update({
-    //   $pull: {queue: episodeId}
-    // })
-    const queue = user.queue;
-    const index = queue.indexOf(episode);
-    user.queue.splice(index, 1);
-    user.markModified('queue');
-    user.save()
-    //according to mongoose docs, no need to save if only pulling once.
-    //need to verify
-  }).then(() => {
+
+  User.removeFromQueue(username, episodeId, function(err, user) {
+    if (err) {
+      console.log('The remove Subscription error is: ', err);
+    }
     res.sendStatus(202).end();
   });
-  // User.findOne(username, (err, user) => {
-    //remove (splice) episode id from queue array
-  // })
-  //if episode does not already exist in database...
-    //Episode.addOne(episode)...then...
-      //User.findOne(username) --> User.addToQueue(episodeId)
+
 };
 
 const getQueue = (req, res) => {
