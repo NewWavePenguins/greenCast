@@ -1,4 +1,4 @@
-import React from 'react';   
+import React from 'react';
 import NavView from './NavView.jsx';
 import SearchResultsView from './SearchResultsView.jsx';
 import RecommPodcastsView from './RecommPodcastsView.js';
@@ -85,7 +85,7 @@ class SearchWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searchBar = {this.state.searchBar}
         />
-        {this.state.searching ? 
+        {this.state.searching ?
           <SearchResultsView
             searchResults={this.state.searchResults}
             subscribe={this.subscribe.bind(this)}
@@ -100,7 +100,7 @@ class SearchWrapper extends React.Component {
 
         {this.state.recommended ? <RecommPodcastsView recommPodcasts = {this.state.recommended} /> : null}
       </div>
-      ) 
+      )
   }
 
 }
@@ -108,6 +108,7 @@ class SearchWrapper extends React.Component {
 const styles = {
   container: {
     marginTop: '50px'
+
   },
   placeHolder: {
     borderStyle: 'dotted',
@@ -131,9 +132,6 @@ const styles = {
     padding: '45px',
   },
 
-};  
+};
 
 export default SearchWrapper;
-
-
-

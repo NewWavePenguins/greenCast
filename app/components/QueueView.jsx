@@ -38,11 +38,12 @@ class QueueView extends React.Component {
 
 const styles = {
   queueStyle: {
-    float: 'right',
+    float: 'left',
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    marginRight: '10%',
+    marginLeft: '5%',
+    paddingTop: '26px',
     marginTop: '15px',
     overflow: 'auto'
   },

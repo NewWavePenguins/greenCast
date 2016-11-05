@@ -67,14 +67,14 @@ class SubscribedChannelView extends React.Component {
 
 const styles = {
   subscriptions: {
+    fontFamily: 'Droid Sans',
     width: '450px',
     height: '550px',
     marginBottom: '80px',
     marginLeft: '10%',
     paddingTop: '11px',
     paddingLeft: '30px',
-    overflow: 'auto',
-    fontFamily: 'Droid Sans'
+    overflow: 'auto'
   }
 }
 

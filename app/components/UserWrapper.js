@@ -13,7 +13,7 @@ class UserWrapper extends React.Component {
     this.state = {
       searchBar: false,
       subscriptions: [],
-      currentFeed: null,
+      currentFeed: [],
       queue: [],
       nowPlayingTitle: null,
       nowPlaying: null,
@@ -97,12 +97,9 @@ class UserWrapper extends React.Component {
         method: 'POST',
         data: {episode: episode}
       }).done(data => {
-
         this.getQueue();
         console.log('episode', episode)
         console.log('data', data)
-        // this.setState({getQueueFlag: !this.state.getQueueFlag})
-
       });
     }
   }
@@ -147,7 +144,10 @@ class UserWrapper extends React.Component {
           toggleRecommend={this.toggleRecommend.bind(this)}
         />
 
-        {this.state.currentFeed ? <FeedView currentFeed={this.state.currentFeed} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null}
+        <FeedView
+          currentFeed={this.state.currentFeed}
+          playThis={this.playThis.bind(this)}
+          addToQueue={this.addToQueue.bind(this)}/>
 
         <QueueView
           queue={this.state.queue}
@@ -156,7 +156,9 @@ class UserWrapper extends React.Component {
           removeFromQueue={this.removeFromQueue.bind(this)}
           />
 
-        <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
+        <PlayerView
+          nowPlaying={this.state.nowPlaying}
+          nowPlayingTitle={this.state.nowPlayingTitle || null}/>
       </div>
     );
   }
