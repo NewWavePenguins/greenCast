@@ -34,7 +34,7 @@ class SearchView extends React.Component {
         <button style={styles.searchButton}>
           <i className="fa fa-search" ariaHidden="true"></i>
         </button>
-        <Link to='/subscriptions' style={styles.myPodcasts} >     My Podcasts</Link>
+        <Link to='/subscriptions' style={styles.myPodcasts}>My Podcasts</Link>
       </div>
     );
   }

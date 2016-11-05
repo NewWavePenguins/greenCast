@@ -8,7 +8,7 @@ import $ from 'jquery';
 
 class UserWrapper extends React.Component {
   constructor () {
-    super()
+    super();
 
     this.state = {
       searchBar: false,
@@ -97,7 +97,12 @@ class UserWrapper extends React.Component {
         method: 'POST',
         data: {episode: episode}
       }).done(data => {
+
         this.getQueue();
+        console.log('episode', episode)
+        console.log('data', data)
+        // this.setState({getQueueFlag: !this.state.getQueueFlag})
+
       });
     }
   }
@@ -135,7 +140,6 @@ class UserWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searchBar={this.state.searchBar}
         />
-        
         <UserView
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
@@ -154,7 +158,7 @@ class UserWrapper extends React.Component {
 
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
       </div>
-      )
+    );
   }
 
 }

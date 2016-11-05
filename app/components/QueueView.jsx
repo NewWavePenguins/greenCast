@@ -17,7 +17,11 @@ class QueueView extends React.Component {
       );
     } else {
       return (
-        <div style={styles.queueStyle}> 
+        <div style={styles.queueStyle}>
+        <div>
+        Queue
+        </div>
+        <br/>
           {
             this.props.queue.map((episode, index) =>
               <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue} />
