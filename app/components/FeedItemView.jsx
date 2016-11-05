@@ -40,11 +40,11 @@ class FeedItemView extends React.Component {
     let hover = this.state.hover ? styles.deepShadow : styles.shadow;
     return (
       <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)}
-       onMouseLeave={this.toggleHover.bind(this)} onClick={this.props.playThis.bind(this, this.props.episode)}
-      >
-        <div style={styles.content}>
-        <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.episode)} className="fa fa-plus-circle" ariaHidden="true"></i>
+       onMouseLeave={this.toggleHover.bind(this)}>
 
+        <div style={styles.content}>
+          <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.episode)} className="fa fa-plus-circle" ariaHidden="true"></i>
+          <i style={styles.playThis} onClick={this.props.playThis.bind(this, this.props.episode)} className="fa fa-play-circle" ariaHidden="true"></i>
           <span>{this.props.episode.image ? <img src={this.props.episode.image} style={styles.image} /> : null}</span>
           <h3>{this.props.episode.title}</h3>
           <p style={styles.descriptionStyle}>{this.shrinkDescription(this.props.episode.description)}</p>
@@ -86,6 +86,15 @@ const styles = {
     color: 'rgb(251,73,71)',
     fontSize: '22px',
     cursor: 'pointer'
+  },
+  playThis: {
+   // top: '35px',
+   // left: '150px',
+   // position: 'absolute',
+   marginLeft: '3px',
+   color: 'rgb(128,128,128)',
+   fontSize: '22px',
+   cursor: 'pointer' 
   },
   image: {
     width: '400px',
