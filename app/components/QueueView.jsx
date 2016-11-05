@@ -17,7 +17,11 @@ class QueueView extends React.Component {
       );
     } else {
       return (
-        <div style={styles.queueStyle}> 
+        <div style={styles.queueStyle}>
+        <div>
+        Queue
+        </div>
+        <br/>
           {
             this.props.queue.map((episode, index) =>
               <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue} />
@@ -34,11 +38,12 @@ class QueueView extends React.Component {
 
 const styles = {
   queueStyle: {
-    float: 'right',
+    float: 'left',
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    marginRight: '10%',
+    marginLeft: '5%',
+    paddingTop: '26px',
     marginTop: '15px',
     overflow: 'auto'
   },

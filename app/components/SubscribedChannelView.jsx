@@ -38,6 +38,10 @@ class SubscribedChannelView extends React.Component {
   render() {
     return (
       <div style={styles.subscriptions}>
+      <div>
+        Subscribed Podcasts
+      </div>
+      <br/>
         {
           this.state.requests.map((channel, index) =>
             <SubscribedChannelItemView
@@ -63,6 +67,7 @@ class SubscribedChannelView extends React.Component {
 
 const styles = {
   subscriptions: {
+    fontFamily: 'Droid Sans',
     width: '450px',
     height: '550px',
     marginBottom: '80px',

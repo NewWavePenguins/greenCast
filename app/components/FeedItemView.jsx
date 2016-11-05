@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Enqueue = () => <div style={styles.hoverEnqueue}>Add To Queue</div>
-const Play = () => <div style={styles.hoverPlay}>Play</div>
+const Enqueue = () => <div style={styles.hoverEnqueue}>Add To Queue</div>;
+const Play = () => <div style={styles.hoverPlay}>Play</div>;
 
 class FeedItemView extends React.Component {
 
@@ -68,7 +68,7 @@ class FeedItemView extends React.Component {
           <div>
             <i style={styles.playThis} onClick={this.props.playThis.bind(this, this.props.episode)} className="fa fa-play-circle" ariaHidden="true"
             onMouseEnter={this.toggleHoverPlay.bind(this)} onMouseLeave={this.toggleHoverPlay.bind(this)}></i>
-          {this.state.hoverPlay ? <Play /> : null}  
+          {this.state.hoverPlay ? <Play /> : null}
           </div>
           <span>{this.props.episode.image ? <img src={this.props.episode.image} style={styles.image} /> : null}</span>
           <h3>{this.props.episode.title}</h3>
@@ -78,7 +78,7 @@ class FeedItemView extends React.Component {
       </div>
     );
   }
-};
+}
 
 const styles = {
   cardStyle: {
@@ -97,13 +97,11 @@ const styles = {
     fontSize: '12px',
   },
   addToQueue: {
-    // top: '35px',
-    // left: '150px',
-    // position: 'absolute',
     color: 'rgb(74,201,67)',
     fontSize: '22px',
     cursor: 'pointer'
   },
+
   hoverEnqueue: {
     // top: '10px',
     // left: '-10px',
@@ -126,9 +124,9 @@ const styles = {
    // left: '150px',
    // position: 'absolute',
    // marginLeft: '3px',
-   color: 'rgb(128,128,128)',
-   fontSize: '22px',
-   cursor: 'pointer'
+    color: 'rgb(128,128,128)',
+    fontSize: '22px',
+    cursor: 'pointer'
   },
   hoverPlay: {
     // bottom: '35px',
@@ -146,6 +144,17 @@ const styles = {
     backgroundColor: 'rgb(128,128,128)',
     borderRadius: '4px',
     margin: '3px'
+  },
+  removeFromQueue: {
+    color: 'rgb(251,73,71)',
+    fontSize: '22px',
+    cursor: 'pointer'
+  },
+  playThis: {
+    // marginLeft: '3px',
+    color: 'rgb(128,128,128)',
+    fontSize: '22px',
+    cursor: 'pointer'
   },
   image: {
     width: '400px',

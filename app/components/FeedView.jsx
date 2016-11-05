@@ -54,16 +54,29 @@ class FeedView extends React.Component {
   }
 
   render() {
-    return (
-      <div style={styles.feedStyle}>
-        <span>{this.props.currentFeedTitle}</span>
-        {
-          this.state.episodeList.map((episode, index) =>
-            <FeedItemView key={index} episode = {episode} playThis={this.props.playThis} addToQueue={this.props.addToQueue}/>
-          )
-        }
-      </div>
-    );
+    if (this.state.episodeList.length === 0) {
+      return (
+        <div style={styles.feedStyle}> Select a Podcast </div>
+          );
+    } else {
+      return (
+        <div style={styles.feedStyle}>
+          <div>
+            Select an episode
+          </div>
+          <br/>
+          {
+            this.state.episodeList.map((episode, index) =>
+              <FeedItemView key={index}
+                episode = {episode}
+                playThis={this.props.playThis}
+                addToQueue={this.props.addToQueue}
+              />
+            )
+          }
+        </div>
+      );
+    }
   }
 
   //request feed from server
@@ -79,12 +92,14 @@ class FeedView extends React.Component {
 
 const styles = {
   feedStyle: {
-    // float: 'left',
+    float: 'left',
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    marginLeft: '30%',
-    marginTop: '15px',
+    marginBottom: '80px',
+    marginLeft: '6%',
+    paddingTop: '26px',
+    paddingLeft: '30px',
     overflow: 'auto'
   }
 };

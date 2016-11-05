@@ -1,4 +1,4 @@
-import React from 'react';   
+import React from 'react';
 import NavView from './NavView.jsx';
 import SearchResultsView from './SearchResultsView.jsx';
 import RecommPodcastsView from './RecommPodcastsView.js';
@@ -12,7 +12,7 @@ class SearchWrapper extends React.Component {
       searching: false,
       searchResults: [],
       subscriptions: [],
-      recommended: null,
+      recommended: [],
       searchBar: true
     };
   }
@@ -34,11 +34,11 @@ class SearchWrapper extends React.Component {
 
   getPodcasts(query) {
     if (query) {
-    let search = this.requestPodcastData(query).done(data => {
-      this.setState({searchResults: data.results, searching: true});
-    });
+      let search = this.requestPodcastData(query).done(data => {
+        this.setState({searchResults: data.results, searching: true});
+      });
     } else {
-      this.setState({searching: false})
+      this.setState({searching: false});
     }
   }
 
@@ -85,22 +85,24 @@ class SearchWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searchBar = {this.state.searchBar}
         />
-        {this.state.searching ? 
+        {this.state.searching ?
           <SearchResultsView
             searchResults={this.state.searchResults}
             subscribe={this.subscribe.bind(this)}
             subscriptions={this.state.subscriptions}
             searching = {this.state.searching}
           />
-          :
-          <div style={styles.placeHolder}>Hey, what do you feel like listening today?
-            <div style={styles.placeHolderMsg}>Use the search bar above to find your favorite channel or simply choose from one of the recommended podcasts!</div>
+           :
+          <div style={styles.cardStyle}>
+             <h3>Hey, what do you feel like listening today?</h3>
+               <div style={styles.descriptionStyle}>Use the search bar above to find your favorite channel or simply choose from one of the recommended podcasts!</div>
           </div>
         }
 
-        {this.state.recommended ? <RecommPodcastsView recommPodcasts = {this.state.recommended} /> : null}
+        <RecommPodcastsView recommPodcasts={this.state.recommended} />
+
       </div>
-      ) 
+    );
   }
 
 }
@@ -120,7 +122,7 @@ const styles = {
     width: '400px',
     height: '320px',
     textAlign: 'center',
-    padding: '35px',
+    padding: '35px'
   },
   placeHolderMsg: {
     fontFamily: 'droid sans',
@@ -130,10 +132,24 @@ const styles = {
     textAlign: 'center',
     padding: '45px',
   },
-
-};  
+  cardStyle: {
+    paddingTop: '15px',
+    marginBottom: '15px',
+    marginLeft: '16px',
+    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+    width: '400px',
+    padding: '10px',
+    background: 'white',
+    fontFamily: 'Droid Sans',
+    marginTop: '70px'
+  },
+  descriptionStyle: {
+    fontSize: '14px',
+    marginBottom: '8px'
+  },
+  durationStyle: {
+    fontSize: '12px',
+  },
+};
 
 export default SearchWrapper;
-
-
-

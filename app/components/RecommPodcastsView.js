@@ -9,6 +9,10 @@ class RecommPodcastsView extends React.Component {
   render() {
     return (
       <div style={styles.search}>
+      <div>
+        Recommended Podcasts
+      </div>
+      <br/>
       {this.props.recommPodcasts.map(podcast => {
             return <RecommPodcastItemView podcast={podcast} />;
         })}
@@ -19,9 +23,14 @@ class RecommPodcastsView extends React.Component {
 
 const styles = {
   search: {
+    // float: 'right',
     paddingTop: '15px',
     display: 'flex',
-    flexFlow: 'row wrap'
+    flexFlow: 'column wrap',
+    fontFamily: 'Droid Sans',
+    width: '450px',
+    height: '700',
+    overflow: 'auto'
   }
 };
 
