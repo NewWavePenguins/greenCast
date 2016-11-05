@@ -34,7 +34,7 @@ class SearchView extends React.Component {
         <button style={styles.searchButton}>
           <i className="fa fa-search" ariaHidden="true"></i>
         </button>
-        <Link to='/subscriptions' style={styles.myPodcasts} >My Podcasts</Link>
+        <Link to='/subscriptions' style={styles.myPodcasts} >     My Podcasts</Link>
       </div>
     );
   }
@@ -60,6 +60,7 @@ const styles = {
     marginTop: '15px',
     fontFamily: 'droid sans',
     textDecoration: 'none',
+    textAlign: 'center',
     background: 'rgb(90, 199, 90)',
     color: 'white',
     height: '20px',

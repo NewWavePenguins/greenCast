@@ -11,7 +11,7 @@ class UserWrapper extends React.Component {
     super()
 
     this.state = {
-      searching: false,
+      searchBar: false,
       subscriptions: [],
       currentFeed: null,
       queue: [],
@@ -113,9 +113,9 @@ class UserWrapper extends React.Component {
         method: 'DELETE',
         data: {episode: episode}
       }).done(data => {
-        // this.setState({subscriptions: data});
         console.log('episode', episode)
         console.log('data', data)
+        this.getQueue();
       });
     }
   }
@@ -127,11 +127,7 @@ class UserWrapper extends React.Component {
         method: 'GET',
         dataType: 'JSON'
       }).done(data => {
-        //console.log(data);
         this.setState({queue: data});
-        //return data;
-        // console.log('episode', episode)
-        // console.log('data', data)
       });
     }
   }
@@ -143,7 +139,7 @@ class UserWrapper extends React.Component {
           username={window.username}
           handleSearchInputChange={this.getPodcasts.bind(this)}
           stopSearching={this.stopSearching.bind(this)}
-          searching={this.state.searching}
+          searchBar={this.state.searchBar}
         />
         {console.log('INSIDE UserWrapper', this.toggleRecommend)}
         <UserView

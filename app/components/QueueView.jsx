@@ -15,7 +15,6 @@ class QueueView extends React.Component {
 
 
   getQueue() {
-    if (window.username) {
       $.ajax({
         url: `/user/${window.username}/queue`,
         method: 'GET',
@@ -23,7 +22,6 @@ class QueueView extends React.Component {
       }).done(data => {
         this.setState({queueList: data});
       });
-    }
   }
 
   removeFromQueue(episode) {
