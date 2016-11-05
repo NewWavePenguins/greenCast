@@ -21,7 +21,7 @@ class NavView extends React.Component {
                 />
               </div>
               :
-              <Link to='/search' style={styles.back}><i className="fa fa-search" ariaHidden="true"></i></Link>
+              <Link to='/search' style={styles.back}>Back to <i className="fa fa-search" ariaHidden="true"></i></Link>
           }
       </div>
     );
