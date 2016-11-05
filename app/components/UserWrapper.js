@@ -53,7 +53,6 @@ class UserWrapper extends React.Component {
 
   showEpisodes(channelId) {
     this.setState({currentFeed: channelId});
-    console.log(this.state.currentFeed);
   }
 
   getPodcasts(query) {
@@ -76,7 +75,7 @@ class UserWrapper extends React.Component {
 
   componentDidMount() {
     this.refreshSubscriptions();
-    //this.getQueue();
+    this.getQueue();
   }
 
   refreshSubscriptions() {
@@ -98,10 +97,7 @@ class UserWrapper extends React.Component {
         method: 'POST',
         data: {episode: episode}
       }).done(data => {
-        // this.setState({subscriptions: data});
-        console.log('episode', episode)
-        console.log('data', data)
-        // this.setState({getQueueFlag: !this.state.getQueueFlag})
+        this.getQueue();
       });
     }
   }
@@ -113,8 +109,6 @@ class UserWrapper extends React.Component {
         method: 'DELETE',
         data: {episode: episode}
       }).done(data => {
-        console.log('episode', episode)
-        console.log('data', data)
         this.getQueue();
       });
     }
@@ -141,7 +135,7 @@ class UserWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searchBar={this.state.searchBar}
         />
-        {console.log('INSIDE UserWrapper', this.toggleRecommend)}
+        
         <UserView
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
@@ -154,9 +148,8 @@ class UserWrapper extends React.Component {
         <QueueView
           queue={this.state.queue}
           playThis={this.playThis.bind(this)}
-          removeFromQueue={this.removeFromQueue.bind(this)}
           getQueue={this.getQueue.bind(this)}
-          playThis={this.playThis.bind(this)}
+          removeFromQueue={this.removeFromQueue.bind(this)}
           />
 
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
