@@ -8,22 +8,22 @@ class QueueView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      queueList: []
-    }
+    // this.state = {
+    //   queueList: []
+    // }
   }
 
 
-  getQueue() {
-      $.ajax({
-        url: `/user/${window.username}/queue`,
-        method: 'GET',
-        dataType: 'JSON'
-      }).done(data => {
-        console.log('DATA INSIDE QueueView', data)
-        this.setState({queueList: data});
-      });
-  }
+  // getQueue() {
+  //     $.ajax({
+  //       url: `/user/${window.username}/queue`,
+  //       method: 'GET',
+  //       dataType: 'JSON'
+  //     }).done(data => {
+  //       console.log('DATA INSIDE QueueView', data)
+  //       this.setState({queueList: data});
+  //     });
+  // }
 
   removeFromQueue(episode) {
     if (window.username) {
@@ -39,24 +39,24 @@ class QueueView extends React.Component {
     this.getQueue()
   }
 
-  //called before render
-  componentDidMount() {
-    this.getQueue();
-  }
+  // //called before render
+  // componentDidMount() {
+  //   this.getQueue();
+  // }
 
 
 
   render() {
-    if (this.state.queueList.length === 0) {
+    if (this.props.queue.length === 0) {
       return (
         <div style={styles.queueStyle}> No episodes in queue </div>
       );
     } else {
       return (
-        <div style={styles.queueStyle}> {this.state.feedTitle}
+        <div style={styles.queueStyle}> {/*this.state.feedTitle*/}
           {
-            this.state.queueList.map((episode, index) =>
-              <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.removeFromQueue.bind(this)} />
+            this.props.queue.map((episode, index) =>
+              <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue} />
             )
           }
         </div>

@@ -53,7 +53,6 @@ class UserWrapper extends React.Component {
 
   showEpisodes(channelId) {
     this.setState({currentFeed: channelId});
-    console.log(this.state.currentFeed);
   }
 
   getPodcasts(query) {
@@ -76,11 +75,8 @@ class UserWrapper extends React.Component {
 
   componentDidMount() {
     this.refreshSubscriptions();
+    this.getQueue();
   }
-
-  // componentWillMount(){
-  //   this.getQueue();
-  // }
 
   refreshSubscriptions() {
     if (window.username) {
@@ -101,27 +97,22 @@ class UserWrapper extends React.Component {
         method: 'POST',
         data: {episode: episode}
       }).done(data => {
-        // console.log('episode', episode)
-        // console.log('data', data)
-        console.log('ADDED TO QUEUE')
         this.getQueue();
       });
     }
   }
 
-  // removeFromQueue(episode) {
-  //   if (window.username) {
-  //     $.ajax({
-  //       url: `/user/${window.username}/queue`,
-  //       method: 'DELETE',
-  //       data: {episode: episode}
-  //     }).done(data => {
-  //       console.log('episode', episode)
-  //       console.log('data', data)
-  //       this.getQueue();
-  //     });
-  //   }
-  // }
+  removeFromQueue(episode) {
+    if (window.username) {
+      $.ajax({
+        url: `/user/${window.username}/queue`,
+        method: 'DELETE',
+        data: {episode: episode}
+      }).done(data => {
+        this.getQueue();
+      });
+    }
+  }
 
   getQueue() {
     if (window.username) {
@@ -158,7 +149,7 @@ class UserWrapper extends React.Component {
           queue={this.state.queue}
           playThis={this.playThis.bind(this)}
           getQueue={this.getQueue.bind(this)}
-          playThis={this.playThis.bind(this)}
+          removeFromQueue={this.removeFromQueue.bind(this)}
           />
 
         <PlayerView nowPlaying={this.state.nowPlaying} nowPlayingTitle={this.state.nowPlayingTitle || null}/>
