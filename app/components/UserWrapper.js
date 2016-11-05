@@ -76,8 +76,11 @@ class UserWrapper extends React.Component {
 
   componentDidMount() {
     this.refreshSubscriptions();
-    //this.getQueue();
   }
+
+  // componentWillMount(){
+  //   this.getQueue();
+  // }
 
   refreshSubscriptions() {
     if (window.username) {
@@ -98,27 +101,27 @@ class UserWrapper extends React.Component {
         method: 'POST',
         data: {episode: episode}
       }).done(data => {
-        // this.setState({subscriptions: data});
-        console.log('episode', episode)
-        console.log('data', data)
-        // this.setState({getQueueFlag: !this.state.getQueueFlag})
-      });
-    }
-  }
-
-  removeFromQueue(episode) {
-    if (window.username) {
-      $.ajax({
-        url: `/user/${window.username}/queue`,
-        method: 'DELETE',
-        data: {episode: episode}
-      }).done(data => {
-        console.log('episode', episode)
-        console.log('data', data)
+        // console.log('episode', episode)
+        // console.log('data', data)
+        console.log('ADDED TO QUEUE')
         this.getQueue();
       });
     }
   }
+
+  // removeFromQueue(episode) {
+  //   if (window.username) {
+  //     $.ajax({
+  //       url: `/user/${window.username}/queue`,
+  //       method: 'DELETE',
+  //       data: {episode: episode}
+  //     }).done(data => {
+  //       console.log('episode', episode)
+  //       console.log('data', data)
+  //       this.getQueue();
+  //     });
+  //   }
+  // }
 
   getQueue() {
     if (window.username) {
@@ -141,7 +144,7 @@ class UserWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searchBar={this.state.searchBar}
         />
-        {console.log('INSIDE UserWrapper', this.toggleRecommend)}
+        
         <UserView
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
@@ -154,7 +157,6 @@ class UserWrapper extends React.Component {
         <QueueView
           queue={this.state.queue}
           playThis={this.playThis.bind(this)}
-          removeFromQueue={this.removeFromQueue.bind(this)}
           getQueue={this.getQueue.bind(this)}
           playThis={this.playThis.bind(this)}
           />

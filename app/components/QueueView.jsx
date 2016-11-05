@@ -20,6 +20,7 @@ class QueueView extends React.Component {
         method: 'GET',
         dataType: 'JSON'
       }).done(data => {
+        console.log('DATA INSIDE QueueView', data)
         this.setState({queueList: data});
       });
   }
@@ -31,16 +32,15 @@ class QueueView extends React.Component {
         method: 'DELETE',
         data: {episode: episode}
       }).done(data => {
-        // this.setState({subscriptions: data});
-        console.log('episode', episode)
-        console.log('data', data)
+        // console.log('episode', episode)
+        // console.log('data', data)
       })
     }
     this.getQueue()
   }
 
   //called before render
-  componentWillMount() {
+  componentDidMount() {
     this.getQueue();
   }
 
