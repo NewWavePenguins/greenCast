@@ -44,7 +44,7 @@ class SubscribedChannelView extends React.Component {
               key = {index}
               channel={channel}
               unsubscribe={this.props.unsubscribe}
-              showEpisodes={this.props.showEpisodes}
+              showEpisodes={this.props.showEpisodes} toggleRecommend={this.props.toggleRecommend}
             />
           )
         }

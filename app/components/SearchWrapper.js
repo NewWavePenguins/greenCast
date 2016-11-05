@@ -1,6 +1,7 @@
 import React from 'react';   
 import NavView from './NavView.jsx';
 import SearchResultsView from './SearchResultsView.jsx';
+import RecommPodcastsView from './RecommPodcastsView.js';
 import $ from 'jquery';
 
 class SearchWrapper extends React.Component {
@@ -10,7 +11,8 @@ class SearchWrapper extends React.Component {
     this.state = {
       searching: true,
       searchResults: [],
-      subscriptions: []
+      subscriptions: [],
+      recommended: null
     };
   }
 
@@ -60,13 +62,12 @@ class SearchWrapper extends React.Component {
   }
 
   componentDidMount() {
-    // load recommended podcasts
     $.ajax({
       url: `/user/${window.username}/recommended`,
       method: 'GET',
       dataType: 'JSON'
     }).done(data => {
-      this.setState({subscriptions: data});
+      this.setState({recommended: data});
     });
   }
 
@@ -84,6 +85,7 @@ class SearchWrapper extends React.Component {
           subscribe={this.subscribe.bind(this)}
           subscriptions={this.state.subscriptions}
         />
+        {this.state.recommended ? <RecommPodcastsView recommPodcasts = {this.state.recommended} /> : null}
       </div>
       ) 
   }

@@ -8,6 +8,7 @@ const UserView = (props) => {
           subscriptions={props.subscriptions}
           unsubscribe={props.unsubscribe}
           showEpisodes={props.showEpisodes}
+          toggleRecommend={props.toggleRecommend}
         />
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 
-class SubscribedChannelItemView extends React.Component {
-
+class RecommPodcastItemView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,19 +17,13 @@ class SubscribedChannelItemView extends React.Component {
     let hover = this.state.hover ? styles.deepShadow : styles.shadow;
     return (
       <div style={Object.assign({}, styles.cardStyle, hover)} onMouseEnter={this.toggleHover.bind(this)} onMouseLeave={this.toggleHover.bind(this)}>
-        <div style={styles.content} onClick={this.props.showEpisodes.bind(this, this.props.channel.collectionId)}>
+        <div style={styles.content}>
           <div>
-            <img style={styles.artwork} src={this.props.channel.artworkUrl100} />
+            <img style={styles.artwork} src={this.props.podcast.img} />
           </div>
           <div style={styles.title}>
-            <span>{this.props.channel.collectionName.length > 24 ? this.props.channel.collectionName.substring(0, 24) + ' ...' : this.props.channel.collectionName}</span>
+            <span>{this.props.podcast.title.length > 24 ? this.props.podcast.title.substring(0, 24) + ' ...' : this.props.podcast.title}</span>
           </div>
-        </div>
-        <div>
-          <i style={styles.unsubscribe} onClick={this.props.unsubscribe.bind(this, this.props.channel.collectionId)} className="fa fa-times-circle" ariaHidden="true"></i>
-        </div>
-        <div>
-          <i style={styles.recommend} onClick={this.props.toggleRecommend.bind(this, this.props.channel.collectionId)} className="fa fa-star-o" aria-hidden="true"></i>
         </div>
       </div>
     );
@@ -40,6 +33,7 @@ class SubscribedChannelItemView extends React.Component {
 const styles = {
   cardStyle: {
     marginBottom: '15px',
+    marginLeft: '15px',
     height: '60px',
     width: '300px',
     position: 'relative',
@@ -65,19 +59,11 @@ const styles = {
     top: '20px',
     position: 'absolute'
   },
-  unsubscribe: {
-    top: '-10px',
-    left: '-10px',
-    position: 'absolute',
-    color: 'rgb(251,73,71)',
-    fontSize: '20px',
-    cursor: 'pointer'
-  },
-  recommend: {
-    bottom: '35px',
+  subscribe: {
+    top: '35px',
     left: '275px',
     position: 'absolute',
-    color: '#FFBF00',
+    color: 'rgb(74,201,67)',
     fontSize: '22px',
     cursor: 'pointer'
   },
@@ -91,4 +77,4 @@ const styles = {
   }
 };
 
-export default SubscribedChannelItemView;
+export default RecommPodcastItemView;
