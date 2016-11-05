@@ -113,9 +113,9 @@ class UserWrapper extends React.Component {
         method: 'DELETE',
         data: {episode: episode}
       }).done(data => {
-        // this.setState({subscriptions: data});
         console.log('episode', episode)
         console.log('data', data)
+        this.getQueue();
       });
     }
   }
@@ -127,11 +127,7 @@ class UserWrapper extends React.Component {
         method: 'GET',
         dataType: 'JSON'
       }).done(data => {
-        //console.log(data);
         this.setState({queue: data});
-        //return data;
-        // console.log('episode', episode)
-        // console.log('data', data)
       });
     }
   }
