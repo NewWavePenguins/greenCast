@@ -9,7 +9,10 @@ class SearchResultsView extends React.Component {
   render() {
     return (
       <div style={styles.search}>
-      Search Results
+      <div>
+        Search Results
+      </div>
+      <br/>
       {
         this.props.searchResults.map(podcast => {
           if (this.props.subscriptions.indexOf(podcast.collectionId + '') < 0) {
@@ -30,7 +33,9 @@ const styles = {
     paddingTop: '15px',
     fontFamily: 'Droid Sans',
     display: 'flex',
-    flexFlow: 'column'
+    flexFlow: 'column wrap',
+    paddingTop: '26px',
+    marginTop: '15px',
   }
 };
 
