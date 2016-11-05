@@ -1,17 +1,30 @@
 import React from 'react';
 
+const Recommend = () => <div style={styles.hoverRecommend}>Recommend</div>
+const Unsubscribe = () => <div style={styles.hoverUnsubscribe}>Unsubscribe</div>
+
 class SubscribedChannelItemView extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      hover: false
+      hover: false,
+      hoverRecommend: false,
+      hoverUnsubscribe: false
     };
   }
 
   toggleHover() {
     this.setState({hover: !this.state.hover});
+  }
+
+  toggleHoverRecommend() {
+    this.setState({hoverRecommend: !this.state.hoverRecommend});
+  }
+
+  toggleHoverUnsubscribe() {
+    this.setState({hoverUnsubscribe: !this.state.hoverUnsubscribe});
   }
 
   render() {
@@ -27,10 +40,14 @@ class SubscribedChannelItemView extends React.Component {
           </div>
         </div>
         <div>
-          <i style={styles.unsubscribe} onClick={this.props.unsubscribe.bind(this, this.props.channel.collectionId)} className="fa fa-times-circle" ariaHidden="true"></i>
+          <i style={styles.unsubscribe} onClick={this.props.unsubscribe.bind(this, this.props.channel.collectionId)} className="fa fa-times-circle" ariaHidden="true"
+          onMouseEnter={this.toggleHoverUnsubscribe.bind(this)} onMouseLeave={this.toggleHoverUnsubscribe.bind(this)}></i>
+          {this.state.hoverUnsubscribe ? <Unsubscribe /> : null}
         </div>
         <div>
-          <i style={styles.recommend} onClick={this.props.toggleRecommend.bind(this, this.props.channel.collectionId)} className="fa fa-star-o" aria-hidden="true"></i>
+          <i style={styles.recommend} onClick={this.props.toggleRecommend.bind(this, this.props.channel.collectionId)} className="fa fa-star-o" aria-hidden="true"
+          onMouseEnter={this.toggleHoverRecommend.bind(this)} onMouseLeave={this.toggleHoverRecommend.bind(this)}></i>
+          {this.state.hoverRecommend ? <Recommend /> : null}
         </div>
       </div>
     );
@@ -73,6 +90,23 @@ const styles = {
     fontSize: '20px',
     cursor: 'pointer'
   },
+  hoverUnsubscribe: {
+    top: '10px',
+    left: '-10px',
+    position: 'absolute',
+    fontFamily: 'Droid Sans',
+    color: 'white',
+    fontSize: '14px',
+    cursor: 'pointer',
+    display: 'inline-block',
+    paddingTop: '2px',
+    paddingRight: '6px',
+    paddingBottom: '2px',
+    paddingLeft: '6px',
+    backgroundColor: 'rgb(251,73,71)',
+    borderRadius: '4px',
+    margin: '3px'
+  },
   recommend: {
     bottom: '35px',
     left: '275px',
@@ -80,6 +114,23 @@ const styles = {
     color: '#FFBF00',
     fontSize: '22px',
     cursor: 'pointer'
+  },
+  hoverRecommend: {
+    bottom: '35px',
+    left: '300px',
+    position: 'absolute',
+    fontFamily: 'Droid Sans',
+    color: 'white',
+    fontSize: '14px',
+    cursor: 'pointer',
+    display: 'inline-block',
+    paddingTop: '2px',
+    paddingRight: '6px',
+    paddingBottom: '2px',
+    paddingLeft: '6px',
+    backgroundColor: '#FFBF00',
+    borderRadius: '4px',
+    margin: '3px'
   },
   shadow: {
     boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
