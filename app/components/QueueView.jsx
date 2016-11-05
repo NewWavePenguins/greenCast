@@ -26,10 +26,27 @@ class QueueView extends React.Component {
     }
   }
 
-  //called before render
-  componentWillMount() {
+  removeFromQueue(episode) {
+    if (window.username) {
+      $.ajax({
+        url: `/user/${window.username}/queue`,
+        method: 'DELETE',
+        data: {episode: episode}
+      }).done(data => {
+        // this.setState({subscriptions: data});
+        console.log('episode', episode)
+        console.log('data', data)
+      })
+    }
     this.getQueue()
   }
+
+  //called before render
+  componentWillMount() {
+    this.getQueue();
+  }
+
+
 
   render() {
     if (this.state.queueList.length === 0) {
@@ -41,24 +58,12 @@ class QueueView extends React.Component {
         <div style={styles.queueStyle}> {this.state.feedTitle}
           {
             this.state.queueList.map((episode, index) =>
-              <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue}/>
+              <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.removeFromQueue.bind(this)} />
             )
           }
         </div>
       );
     }
-  }
-
-
-  componentDidMount() {
-    var context = this;
-    const requests = this.props.queue
-    Promise.all(requests).done(() => {
-      context.setState({
-         queueList: context.props.queue
-      })
-    })
-
   }
 
 }
@@ -71,7 +76,7 @@ const styles = {
     fontFamily: 'Droid Sans',
     width: '450px',
     height: '700',
-    // marginRight: '10%',
+    marginRight: '10%',
     marginTop: '15px',
     overflow: 'auto'
   }

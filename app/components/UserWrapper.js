@@ -16,7 +16,8 @@ class UserWrapper extends React.Component {
       currentFeed: null,
       queue: [],
       nowPlayingTitle: null,
-      nowPlaying: null
+      nowPlaying: null,
+      getQueueFlag: false
     };
   }
 
@@ -100,6 +101,7 @@ class UserWrapper extends React.Component {
         // this.setState({subscriptions: data});
         console.log('episode', episode)
         console.log('data', data)
+        // this.setState({getQueueFlag: !this.state.getQueueFlag})
       });
     }
   }
@@ -147,7 +149,7 @@ class UserWrapper extends React.Component {
         <UserView
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
-          showEpisodes={this.showEpisodes.bind(this)} 
+          showEpisodes={this.showEpisodes.bind(this)}
           toggleRecommend={this.toggleRecommend.bind(this)}
         />
 
