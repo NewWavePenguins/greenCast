@@ -92,10 +92,10 @@ class SearchWrapper extends React.Component {
             subscriptions={this.state.subscriptions}
             searching = {this.state.searching}
           />
-          :
+           :
           <div style={styles.cardStyle}>
-            <h3>Hey, what do you feel like listening today?</h3>
-              <div style={styles.descriptionStyle}>Use the search bar above to find your favorite channel or simply choose from one of the recommended podcasts!</div>
+             <h3>Hey, what do you feel like listening today?</h3>
+               <div style={styles.descriptionStyle}>Use the search bar above to find your favorite channel or simply choose from one of the recommended podcasts!</div>
           </div>
         }
 
@@ -141,7 +141,7 @@ const styles = {
     padding: '10px',
     background: 'white',
     fontFamily: 'Droid Sans',
-    marginTop: '60px'
+    marginTop: '70px'
   },
   descriptionStyle: {
     fontSize: '14px',

@@ -10,19 +10,22 @@ class SearchResultsView extends React.Component {
     return (
       <div style={styles.search}>
       <div>
-        Search Results
+      Search Results
       </div>
       <br/>
+      <div>
       {
         this.props.searchResults.map(podcast => {
           if (this.props.subscriptions.indexOf(podcast.collectionId + '') < 0) {
             return <SearchResultsItemView podcast={podcast}
-                                          subscribe={this.props.subscribe}/>;
+            subscribe={this.props.subscribe}/>;
           } else {
             return null;
           }
         })
       }
+
+      </div>
       </div>
     );
   }
@@ -33,9 +36,13 @@ const styles = {
     paddingTop: '15px',
     fontFamily: 'Droid Sans',
     display: 'flex',
-    flexFlow: 'column wrap',
+    flexFlow: 'column',
     paddingTop: '26px',
     marginTop: '15px',
+    width: '650px',
+    height: '700',
+    overflow: 'auto',
+    float: 'left'
   }
 };
 

@@ -23,11 +23,14 @@ class RecommPodcastsView extends React.Component {
 
 const styles = {
   search: {
-    float: 'left',
+    // float: 'right',
     paddingTop: '15px',
     display: 'flex',
     flexFlow: 'column wrap',
-    fontFamily: 'Droid Sans'
+    fontFamily: 'Droid Sans',
+    width: '450px',
+    height: '700',
+    overflow: 'auto'
   }
 };
 
