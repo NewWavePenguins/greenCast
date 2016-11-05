@@ -12,7 +12,7 @@ class SearchWrapper extends React.Component {
       searching: false,
       searchResults: [],
       subscriptions: [],
-      recommended: null,
+      recommended: [],
       searchBar: true
     };
   }
@@ -98,7 +98,8 @@ class SearchWrapper extends React.Component {
           </div>
         }
 
-        {this.state.recommended ? <RecommPodcastsView recommPodcasts = {this.state.recommended} /> : null}
+        <RecommPodcastsView recommPodcasts = {this.state.recommended} />
+
       </div>
       )
   }
