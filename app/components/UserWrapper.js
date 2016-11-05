@@ -11,7 +11,7 @@ class UserWrapper extends React.Component {
     super()
 
     this.state = {
-      searching: false,
+      searchBar: false,
       subscriptions: [],
       currentFeed: null,
       queue: [],
@@ -139,7 +139,7 @@ class UserWrapper extends React.Component {
           username={window.username}
           handleSearchInputChange={this.getPodcasts.bind(this)}
           stopSearching={this.stopSearching.bind(this)}
-          searching={this.state.searching}
+          searchBar={this.state.searchBar}
         />
         {console.log('INSIDE UserWrapper', this.toggleRecommend)}
         <UserView
