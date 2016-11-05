@@ -11,9 +11,13 @@ class FeedItemView extends React.Component {
   }
 
   shrinkDescription(desc) {
-    let summary = desc + '';
-    summary = summary.split('<')[0];
-    return summary.substring(0, 325) + '...';
+    if (desc) {
+      let summary = desc + '';
+      summary = summary.split('<')[0];
+      return summary.substring(0, 325) + '...';
+    } else {
+      return '';
+    }
   }
 
   //for formatting of podcast times
@@ -94,7 +98,7 @@ const styles = {
    marginLeft: '3px',
    color: 'rgb(128,128,128)',
    fontSize: '22px',
-   cursor: 'pointer' 
+   cursor: 'pointer'
   },
   image: {
     width: '400px',
