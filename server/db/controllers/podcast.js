@@ -8,8 +8,8 @@ function addOne(podcast, cb) {
 //   EpisodeModel.findOneAndRemove({title: episodeTitle}, cb);
 // }
 
-function findOne(podcastTitle, cb) {
-  PodcastModel.findOne({title: podcastTitle}, cb);
+function findOne(podcastId, cb) {
+  PodcastModel.findOne({id: podcastId}, cb);
 }
 
 function findAllRecommended(cb) {

@@ -42,10 +42,13 @@ app.param('username', function(req, res, next, username) {
 app.get('/user/:username/subscriptions', routes.getSubscriptions);
 
 // returns all recommended subscriptions
-app.get('/user/:username/recommended', routes.getSubscriptions);
+app.get('/user/:username/recommended', routes.getRecommended);
 
 // adds a new channel to a user's subscriptions
 app.post('/user/:username/subscriptions', routes.addSubscription);
+
+// returns all recommended subscriptions
+app.post('/user/:username/recommended', routes.toggleRecommended);
 
 // removes a new channel from a user's subscriptions
 app.delete('/user/:username/subscriptions', routes.removeSubscription);

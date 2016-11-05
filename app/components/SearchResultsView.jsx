@@ -13,8 +13,7 @@ class SearchResultsView extends React.Component {
         this.props.searchResults.map(podcast => {
           if (this.props.subscriptions.indexOf(podcast.collectionId + '') < 0) {
             return <SearchResultsItemView podcast={podcast} 
-                                          subscribe={this.props.subscribe}
-                                          addPodcast={this.props.addPodcast}/>;
+                                          subscribe={this.props.subscribe}/>;
           } else {
             return null;
           }

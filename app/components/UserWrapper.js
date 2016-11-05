@@ -20,17 +20,6 @@ class UserWrapper extends React.Component {
     };
   }
 
-  subscribe(channelId) {
-    $.ajax({
-      url: `/user/${window.username}/subscriptions`,
-      method: 'POST',
-      data: {channel: channelId}
-    }).done(() => {
-      console.log('subscribed to', channelId);
-      this.refreshSubscriptions();
-    });
-  }
-
   playThis(episode) {
     console.log(episode);
     console.log(episode.title, ' is loading, be patient!');
@@ -48,6 +37,16 @@ class UserWrapper extends React.Component {
     }).done(() => {
       console.log('unsubscribed from', channelId);
       this.refreshSubscriptions();
+    });
+  }
+
+  toggleRecommend(podcastId) {
+    $.ajax({
+      url: `/user/${window.username}/recommended`,
+      method: 'POST',
+      data: {podcastId: podcastId}
+    }).done(() => {
+      console.log('Toggled recommended for podcase ', podcastId);
     });
   }
 
@@ -87,7 +86,6 @@ class UserWrapper extends React.Component {
         dataType: 'JSON'
       }).done(data => {
         this.setState({subscriptions: data});
-
       });
     }
   }
@@ -145,11 +143,12 @@ class UserWrapper extends React.Component {
           stopSearching={this.stopSearching.bind(this)}
           searching={this.state.searching}
         />
-
+        {console.log('INSIDE UserWrapper', this.toggleRecommend)}
         <UserView
           subscriptions={this.state.subscriptions}
           unsubscribe={this.unsubscribe.bind(this)}
-          showEpisodes={this.showEpisodes.bind(this)}
+          showEpisodes={this.showEpisodes.bind(this)} 
+          toggleRecommend={this.toggleRecommend.bind(this)}
         />
 
         {this.state.currentFeed ? <FeedView currentFeed={this.state.currentFeed} playThis={this.playThis.bind(this)} addToQueue={this.addToQueue.bind(this)}/> : null}

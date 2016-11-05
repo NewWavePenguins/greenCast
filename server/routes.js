@@ -13,6 +13,33 @@ const root = (req, res) => {
   res.status(200).render(index, {username: req.user});
 };
 
+
+// get recommended 
+const getRecommended = (req, res) => {
+  Podcast.findAllRecommended((err, podcasts) => {
+    if (err) {
+      console.log('The get Recommended error is', err);
+    } else {
+      res.status(200).send(podcasts);
+    }
+  })
+}
+
+// toggle marking recommended 
+const toggleRecommended = (req, res) => {
+  let podcastId = req.body.podcastId;
+  Podcast.findOne(podcastId, (err, podcast) => {
+    if (err) {
+      console.log('The toggle Recommended error is', err);
+    } else {
+      console.log(podcast);
+      podcast.recommended = !podcast.recommended;
+      podcast.save();
+      res.status(200).end();
+    }
+  })
+}
+
 // routes for subscriptions
 const getSubscriptions = (req, res) => {
   // returns a user's subscriptions
@@ -167,7 +194,9 @@ const getQueue = (req, res) => {
 module.exports = {
   root: root,
   getSubscriptions: getSubscriptions,
+  getRecommended: getRecommended,
   addSubscription: addSubscription,
+  toggleRecommended: toggleRecommended,
   removeSubscription: removeSubscription,
   getEpisodes: getEpisodes,
   login: login,
