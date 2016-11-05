@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Enqueue = () => <div style={styles.hoverEnqueue}>Add To Queue</div>
-const Play = () => <div style={styles.hoverPlay}>Play</div>
+const Enqueue = () => <div style={styles.hoverEnqueue}>Add To Queue</div>;
+const Play = () => <div style={styles.hoverPlay}>Play</div>;
 
 class FeedItemView extends React.Component {
 
@@ -78,7 +78,7 @@ class FeedItemView extends React.Component {
       </div>
     );
   }
-};
+}
 
 const styles = {
   cardStyle: {
@@ -124,9 +124,9 @@ const styles = {
    // left: '150px',
    // position: 'absolute',
    // marginLeft: '3px',
-   color: 'rgb(128,128,128)',
-   fontSize: '22px',
-   cursor: 'pointer'
+    color: 'rgb(128,128,128)',
+    fontSize: '22px',
+    cursor: 'pointer'
   },
   hoverPlay: {
     // bottom: '35px',
@@ -144,14 +144,14 @@ const styles = {
     backgroundColor: 'rgb(128,128,128)',
     borderRadius: '4px',
     margin: '3px'
-    
+  },
   removeFromQueue: {
     color: 'rgb(251,73,71)',
     fontSize: '22px',
     cursor: 'pointer'
   },
   playThis: {
-    marginLeft: '3px',
+    // marginLeft: '3px',
     color: 'rgb(128,128,128)',
     fontSize: '22px',
     cursor: 'pointer'
