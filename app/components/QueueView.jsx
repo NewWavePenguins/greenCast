@@ -8,52 +8,16 @@ class QueueView extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   queueList: []
-    // }
   }
-
-
-  // getQueue() {
-  //     $.ajax({
-  //       url: `/user/${window.username}/queue`,
-  //       method: 'GET',
-  //       dataType: 'JSON'
-  //     }).done(data => {
-  //       console.log('DATA INSIDE QueueView', data)
-  //       this.setState({queueList: data});
-  //     });
-  // }
-
-  removeFromQueue(episode) {
-    if (window.username) {
-      $.ajax({
-        url: `/user/${window.username}/queue`,
-        method: 'DELETE',
-        data: {episode: episode}
-      }).done(data => {
-        // console.log('episode', episode)
-        // console.log('data', data)
-      })
-    }
-    this.getQueue()
-  }
-
-  // //called before render
-  // componentDidMount() {
-  //   this.getQueue();
-  // }
-
-
 
   render() {
     if (this.props.queue.length === 0) {
       return (
-        <div style={styles.queueStyle}> No episodes in queue </div>
+        <div style={styles.noQueueMsg}> No episodes in queue </div>
       );
     } else {
       return (
-        <div style={styles.queueStyle}> {/*this.state.feedTitle*/}
+        <div style={styles.queueStyle}> 
           {
             this.props.queue.map((episode, index) =>
               <QueueItemView key={index} episode = {episode} playThis={this.props.playThis} removeFromQueue={this.props.removeFromQueue} />
@@ -77,7 +41,21 @@ const styles = {
     marginRight: '10%',
     marginTop: '15px',
     overflow: 'auto'
-  }
+  },
+  noQueueMsg: {
+      border: 'none',
+      // borderStyle: 'dotted',
+      // borderColor: 'grey',
+      // borderWidth: '20px dashed #ccc',
+      fontFamily: 'droid sans',
+      fontSize: '40px',
+      fontWeight: 'bold',
+      color: 'grey',
+      width: '200px',
+      height: '200px',
+      textAlign: 'center',
+      padding: '35px',
+    }
 };
 
 export default QueueView;
