@@ -94,7 +94,7 @@ class SearchWrapper extends React.Component {
           />
            :
           <div style={styles.cardStyle}>
-             <h3>Hey, what do you feel like listening today?</h3>
+             <h2>Hey, what do you feel like listening to today?</h2>
                <div style={styles.descriptionStyle}>Use the search bar above to find your favorite channel or simply choose from one of the recommended podcasts!</div>
           </div>
         }
@@ -133,13 +133,18 @@ const styles = {
     padding: '45px',
   },
   cardStyle: {
-    paddingTop: '15px',
     marginBottom: '15px',
     marginLeft: '16px',
     boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+    height: '200px',
     width: '400px',
     padding: '10px',
-    background: 'white',
+    paddingTop: '80px',
+    paddingLeft: '20px',
+    paddingRight: '20px',
+    background: '#e9e9e9',
+    textAlign: 'center',
+
     fontFamily: 'Droid Sans',
     marginTop: '70px'
   },
