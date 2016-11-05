@@ -1,12 +1,17 @@
 import React from 'react';
 
+const Enqueue = () => <div style={styles.hoverEnqueue}>Add To Queue</div>
+const Play = () => <div style={styles.hoverPlay}>Play</div>
+
 class FeedItemView extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      hover: false
+      hover: false,
+      hoverEnqueue: false,
+      hoverPlay: false
     };
   }
 
@@ -40,6 +45,14 @@ class FeedItemView extends React.Component {
     this.setState({hover: !this.state.hover});
   }
 
+  toggleHoverEnqueue() {
+    this.setState({hoverEnqueue: !this.state.hoverEnqueue});
+  }
+
+  toggleHoverPlay() {
+    this.setState({hoverPlay: !this.state.hoverPlay});
+  }
+
   render() {
     let hover = this.state.hover ? styles.deepShadow : styles.shadow;
     return (
@@ -47,8 +60,16 @@ class FeedItemView extends React.Component {
        onMouseLeave={this.toggleHover.bind(this)}>
 
         <div style={styles.content}>
-          <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.episode)} className="fa fa-plus-circle" ariaHidden="true"></i>
-          <i style={styles.playThis} onClick={this.props.playThis.bind(this, this.props.episode)} className="fa fa-play-circle" ariaHidden="true"></i>
+          <div>
+            <i style={styles.addToQueue} onClick={this.props.addToQueue.bind(this, this.props.episode)} className="fa fa-plus-circle" ariaHidden="true"
+          onMouseEnter={this.toggleHoverEnqueue.bind(this)} onMouseLeave={this.toggleHoverEnqueue.bind(this)}></i>
+          {this.state.hoverEnqueue ? <Enqueue /> : null}
+          </div>
+          <div>
+            <i style={styles.playThis} onClick={this.props.playThis.bind(this, this.props.episode)} className="fa fa-play-circle" ariaHidden="true"
+            onMouseEnter={this.toggleHoverPlay.bind(this)} onMouseLeave={this.toggleHoverPlay.bind(this)}></i>
+          {this.state.hoverPlay ? <Play /> : null}  
+          </div>
           <span>{this.props.episode.image ? <img src={this.props.episode.image} style={styles.image} /> : null}</span>
           <h3>{this.props.episode.title}</h3>
           <p style={styles.descriptionStyle}>{this.shrinkDescription(this.props.episode.description)}</p>
@@ -83,22 +104,48 @@ const styles = {
     fontSize: '22px',
     cursor: 'pointer'
   },
-  removeFromQueue: {
-    // top: '35px',
-    // left: '150px',
+  hoverEnqueue: {
+    // top: '10px',
+    // left: '-10px',
     // position: 'absolute',
-    color: 'rgb(251,73,71)',
-    fontSize: '22px',
-    cursor: 'pointer'
+    fontFamily: 'Droid Sans',
+    color: 'white',
+    fontSize: '14px',
+    cursor: 'pointer',
+    display: 'inline-block',
+    paddingTop: '2px',
+    paddingRight: '6px',
+    paddingBottom: '2px',
+    paddingLeft: '6px',
+    backgroundColor: 'rgb(74,201,67)',
+    borderRadius: '4px',
+    margin: '3px'
   },
   playThis: {
    // top: '35px',
    // left: '150px',
    // position: 'absolute',
-   marginLeft: '3px',
+   // marginLeft: '3px',
    color: 'rgb(128,128,128)',
    fontSize: '22px',
    cursor: 'pointer'
+  },
+  hoverPlay: {
+    // bottom: '35px',
+    // left: '300px',
+    // position: 'absolute',
+    fontFamily: 'Droid Sans',
+    color: 'white',
+    fontSize: '14px',
+    cursor: 'pointer',
+    display: 'inline-block',
+    paddingTop: '2px',
+    paddingRight: '6px',
+    paddingBottom: '2px',
+    paddingLeft: '6px',
+    backgroundColor: 'rgb(128,128,128)',
+    borderRadius: '4px',
+    margin: '3px'
   },
   image: {
     width: '400px',
